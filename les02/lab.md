@@ -51,15 +51,15 @@ classDiagram
     Parser .. Product
 
     class  Product {
-        +int product_id
-        +string name
-        +string description
-        +int category_id
-        +decimal price
-        +int stock_quantity
-        +string image_url
-        +datetime created_at
-        +datetime updated_at
+        +long productId
+        +String name
+        +String description
+        +int categoryId
+        +BigDecimal price
+        +int stockQuantity
+        +String imageUrl
+        +Date createdAt
+        +Date updatedAt
     }
 
     class  Reader{
@@ -89,6 +89,7 @@ classDiagram
         - ProductProvider provider
         +void render()
     }
+
 
     class ProductProvider {
         + List[Product] getProducts()
