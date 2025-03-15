@@ -3,12 +3,14 @@
  */
 package ru.bsuedu.cad.lab;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(Config.class);
+        Renderer renderer = ctx.getBean("renderer", Renderer.class);
+        renderer.render();
     }
 }
