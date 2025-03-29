@@ -10,11 +10,13 @@ import ru.bsuedu.cad.demo.entity.Student;
 
 @Repository("hibernateStudentRepository")
 public class StudentHibernateRepository implements StudentRepository  {
+
     private SessionFactory sessionFactory;
 
     public StudentHibernateRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
     public void save(Student student) {
         Session session = sessionFactory.getCurrentSession();
             //Transaction tx = session.beginTransaction();
