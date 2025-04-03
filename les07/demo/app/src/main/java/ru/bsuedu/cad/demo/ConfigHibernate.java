@@ -17,7 +17,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 @Import(ConfigBasic.class)
-@Configuration
+///@Configuration
 @ComponentScan(basePackages = "ru.bsuedu.cad.demo")
 @EnableTransactionManagement
 public class ConfigHibernate {
