@@ -1,2 +1,5 @@
 .DS_Store
 *.pdf
+.vscode/settings.json
+.idea/workspace.xml
+les02/lab/.idea/workspace.xml
