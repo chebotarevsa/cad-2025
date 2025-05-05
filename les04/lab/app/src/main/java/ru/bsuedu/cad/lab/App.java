@@ -10,10 +10,7 @@ public class App {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
 				SpringConfig.class);
 
-		// ConsoleTableRenderer table = context.getBean("consoleTableRenderer",
-		// ConsoleTableRenderer.class);
-		// table.render();
-		ConsoleTableRenderer r = context.getBean("consoleTableRenderer", ConsoleTableRenderer.class);
+		Renderer r = context.getBean("htmlTableRenderer", Renderer.class);
 		r.render();
 		context.close();
 	}

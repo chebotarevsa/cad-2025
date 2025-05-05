@@ -1,28 +1,26 @@
 package ru.bsuedu.cad.lab;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.aop.Advisor;
+import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 @Configuration
+@ComponentScan(basePackages = "ru.bsuedu.cad.lab")
 public class SpringConfig {
 
 	@Bean
-	public CSVParser csvParser() {
-		return new CSVParser();
-	}
+	public Parser parser() {
+		var proxy = new ProxyFactory();
+		var csvParser = new CSVParser();
+		var advice = new TimeCounterAdvice();
+		var pointcut = new TimeCounterPointCut();
+		Advisor advisor = new DefaultPointcutAdvisor(pointcut, advice);
+		proxy.addAdvisor(advisor);
+		proxy.setTarget(csvParser);
 
-	@Bean
-	public ResourceFileReader resourceFileReader() {
-		return new ResourceFileReader();
-	}
-
-	@Bean
-	public ConcreteProductProvider concreteProductProvider() {
-		return new ConcreteProductProvider(resourceFileReader(), csvParser());
-	}
-
-	@Bean
-	public ConsoleTableRenderer consoleTableRenderer() {
-		return new ConsoleTableRenderer(concreteProductProvider());
+		return (Parser) proxy.getProxy();
 	}
 }

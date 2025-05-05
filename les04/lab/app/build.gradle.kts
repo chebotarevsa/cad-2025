@@ -24,6 +24,7 @@ dependencies {
     // This dependency is used by the application.
     implementation(libs.guava)
 		implementation(libs.spring.context)
+		implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
