@@ -38,8 +38,8 @@ public class StudentService {
     }
 
 
-    public void findStudentByNamePageable(String name) {
-        Pageable pageable = PageRequest.of(0, 5, Sort.by("name").ascending());
+    public void findStudentByNamePageable(String name, int page, int pageSize) {
+        Pageable pageable = PageRequest.of(page, pageSize, Sort.by("name").ascending());
 
         var studentPage = studentRepository.findByNameContaining(name, pageable);
 

@@ -23,10 +23,10 @@ public class Client {
 
     public void run() {
         studentService.createStudent("Ли Си Цин", 12002308);
-        for ( var g: groupService.searchGroupByPartName("1112")) {
-            LOGGER.info(g.toString());
-        }
+       // for ( var g: groupService.searchGroupByPartName("1112")) {
+       //     LOGGER.info(g.toString());
+       // }
 
-        studentService.findStudentByNamePageable("С");
+       studentService.findStudentByNamePageable("С", 1, 2);
     }
 }

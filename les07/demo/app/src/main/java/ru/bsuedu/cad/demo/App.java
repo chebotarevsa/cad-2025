@@ -12,7 +12,7 @@ import ru.bsuedu.cad.demo.app.Client;;
 public class App {
         private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
     public static void main(String[] args) {
-        var ctx = new AnnotationConfigApplicationContext(ConfigHibernate.class);
+        var ctx = new AnnotationConfigApplicationContext(ConfigJpa.class);
         var client = ctx.getBean(Client.class);
         client.run();
     }
