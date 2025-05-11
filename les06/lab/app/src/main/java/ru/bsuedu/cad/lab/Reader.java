@@ -1,5 +1,5 @@
 package ru.bsuedu.cad.lab;
 
 public interface Reader {
-	String read();
+	String read(String fileKey);
 }

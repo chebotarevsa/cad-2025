@@ -2,6 +2,6 @@ package ru.bsuedu.cad.lab;
 
 import java.util.List;
 
-public interface Parser {
-	List<Product> parse(String text);
+public interface Parser<T> {
+	List<T> parse(String text);
 }

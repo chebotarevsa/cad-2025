@@ -1,5 +1,6 @@
 package ru.bsuedu.cad.lab;
 
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -8,12 +9,16 @@ import org.springframework.stereotype.Component;
 @PropertySource("application.properties")
 public class ValueProvider implements Provider {
 
-	@Value("${filename}")
-	private String filename;
+	@Value("${product.filename}")
+	private String product_filename;
+
+	@Value("${category.filename}")
+	private String category_filename;
 
 	@Override
-	public String getFileName() {
-		return filename;
-	}
-
+	public Map<String, String> getFileName() {
+		return Map.of(
+				"productFile", product_filename,
+				"categoryFile", category_filename);
+	};
 }

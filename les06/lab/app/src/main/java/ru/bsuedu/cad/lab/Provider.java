@@ -1,6 +1,7 @@
 package ru.bsuedu.cad.lab;
 
-public interface Provider {
-	String getFileName();
+import java.util.Map;
 
+public interface Provider {
+	Map<String, String> getFileName();
 }

@@ -5,18 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConcreteProductProvider implements DataProvider<Product> {
+public class ConcreteCategoryProvider implements DataProvider<Category> {
 	private Reader reader;
-	private Parser<Product> parser;
+	private Parser<Category> parser;
 
 	@Autowired
-	public ConcreteProductProvider(Reader reader, Parser<Product> parser) {
+	public ConcreteCategoryProvider(Reader reader, Parser<Category> parser) {
 		this.reader = reader;
 		this.parser = parser;
 	}
 
 	@Override
-	public List<Product> getItems() {
-		return parser.parse(reader.read("productFile"));
+	public List<Category> getItems() {
+		return parser.parse(reader.read("categoryFile"));
 	}
 }

@@ -25,6 +25,12 @@ dependencies {
     implementation(libs.guava)
 		implementation(libs.spring.context)
 		implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
+		implementation("org.springframework:spring-jdbc:6.2.2") 
+		implementation("com.h2database:h2:2.3.232")
+		implementation("org.slf4j:slf4j-api:2.1.0-alpha1") 
+
+    implementation("ch.qos.logback:logback-core:1.5.6") 
+    implementation("ch.qos.logback:logback-classic:1.5.6") 
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

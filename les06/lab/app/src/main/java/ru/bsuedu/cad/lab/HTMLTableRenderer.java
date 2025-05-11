@@ -6,23 +6,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("htmlTableRenderer")
 public class HTMLTableRenderer implements Renderer {
 
-	private ProductProvider provider;
+	private DataProvider<Product> provider;
 
 	@Autowired
-	public HTMLTableRenderer(ProductProvider provider) {
+	public HTMLTableRenderer(DataProvider<Product> provider) {
 		this.provider = provider;
 	}
 
 	@Override
 	public void render() {
-		List<Product> products = provider.getProducts();
+		List<Product> products = provider.getItems();
 
 		File file = new File("src/main/resources/output.html");
 		StringBuilder htmlBuilder = new StringBuilder();
@@ -61,15 +60,15 @@ public class HTMLTableRenderer implements Renderer {
 
 		for (Product product : products) {
 			htmlBuilder.append("<tr>")
-					.append("<td>").append(String.format("%-2d", product.productId)).append("</td>")
+					.append("<td>").append(String.format("%-2d", product.product_id)).append("</td>")
 					.append("<td>").append(String.format("%-33s", product.name)).append("</td>")
 					.append("<td>").append(String.format("%-38s", product.description)).append("</td>")
-					.append("<td>").append(product.categoryId).append("</td>")
+					.append("<td>").append(product.category_id).append("</td>")
 					.append("<td>").append(String.format("%-4.0f", product.price)).append("</td>")
-					.append("<td>").append(String.format("%-3d", product.stockQuantity)).append("</td>")
-					.append("<td>").append(String.format("%-39s", product.imageUrl)).append("</td>")
-					.append("<td>").append(new SimpleDateFormat("yyyy-MM-dd").format(product.createdAt)).append("</td>")
-					.append("<td>").append(new SimpleDateFormat("yyyy-MM-dd").format(product.updatedAt)).append("</td>")
+					.append("<td>").append(String.format("%-3d", product.stock_quantity)).append("</td>")
+					.append("<td>").append(String.format("%-39s", product.image_url)).append("</td>")
+					.append("<td>").append(new SimpleDateFormat("yyyy-MM-dd").format(product.created_at)).append("</td>")
+					.append("<td>").append(new SimpleDateFormat("yyyy-MM-dd").format(product.updated_at)).append("</td>")
 					.append("</tr>");
 		}
 
@@ -101,5 +100,4 @@ public class HTMLTableRenderer implements Renderer {
 			e.printStackTrace();
 		}
 	}
-
 }
