@@ -297,4 +297,4 @@ public class NarutoficatorAspect {
 
 ```
 
-👀 Демонстрация.  Пример ["Нарутофикатор AspectJ"](./demo/aspectj)
+
