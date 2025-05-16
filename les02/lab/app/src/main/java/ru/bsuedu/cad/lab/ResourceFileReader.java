@@ -1,29 +1,24 @@
 package ru.bsuedu.cad.lab;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 public class ResourceFileReader implements Reader {
-   private String path = "product.csv";
 
-   public ResourceFileReader() {
-   }
+	@Override
+	public String read() {
+		String path = "product.csv";
 
-   public String read() {
-      Resource resource = new ClassPathResource(this.path);
-
-      try {
-         return new String(Files.readAllBytes(Paths.get(resource.getURI())));
-      } catch (FileNotFoundException var3) {
-         var3.printStackTrace();
-         return null;
-      } catch (IOException var4) {
-         var4.printStackTrace();
-         return null;
-      }
-   }
+		try {
+			return Files.readString(Paths.get(getClass().getClassLoader().getResource(path).toURI()));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException | URISyntaxException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
