@@ -1,45 +1,44 @@
 package ru.bsuedu.cad.lab;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("reader")
+@Component
 public class ResourceFileReader implements Reader {
-   
-   @PostConstruct
-   public void init() {
-      Date cur = new Date();
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-      String currentDateTime = dateFormat. format(cur);
-      System.out.println(currentDateTime);
-   }
+	private Provider provider;
 
-   //@Value("#{propertyProvider.fileName}")
-   private String path;
+	@Autowired
+	public ResourceFileReader(Provider provider) {
+		this.provider = provider;
+	}
 
-   public ResourceFileReader(PropertyProvider propertyProvider) {
-      path = propertyProvider.getFileName();
-   }
+	@PostConstruct
+	public void init() {
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
+		String formattedDateTime = now.format(formatter);
+		System.out.println(String.format("Bean был полность проинициализирован: " + formattedDateTime));
+	}
 
-   public String read() {
-      Resource resource = new ClassPathResource("product.csv");
+	@Override
+	public String read() {
+		String path = provider.getFileName();
 
-      try {
-         return new String(Files.readAllBytes(Paths.get(resource.getURI())));
-      } catch (FileNotFoundException var3) {
-         var3.printStackTrace();
-         return null;
-      } catch (IOException var4) {
-         var4.printStackTrace();
-         return null;
-      }
-   }
+		try {
+			return Files.readString(Paths.get(getClass().getClassLoader().getResource(path).toURI()));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException | URISyntaxException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
