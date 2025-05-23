@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .btn-api {
+            background-color: #2196F3;
+        }
+        .btn-api:hover {
+            background-color: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cистема заказов</h1>
+    <div class="btn-container">
+        <a href="orders" class="btn">Перейти к списку заказов</a>
+        <a href="create-order" class="btn">Создать новый заказ</a>
+        <a href="api/products" class="btn btn-api">Просмотреть продукты (REST API)</a>
+    </div>
+</body>
+</html>
