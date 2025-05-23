@@ -10,7 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class App {
         private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
     public static void main(String[] args) {
-        var ctx = new AnnotationConfigApplicationContext(ConfigHibernate.class);
+        var ctx = new AnnotationConfigApplicationContext(ConfigBasic.class);
         //var singerDao = ctx.getBean(SingerDao.class);
     }
 }

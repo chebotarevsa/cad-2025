@@ -32,17 +32,17 @@ public class Student {
     @JoinColumn(name = "GROUP_ID")
     private Group group;
 
+//    @ManyToMany
+//     private Set<Course> courses = new HashSet<>();
+
+
     @ManyToMany
-   private Set<Course> courses = new HashSet<>();
-
-
-    // @ManyToMany
-    // @JoinTable(
-    //     name = "demo_student_course",
-    //     joinColumns = @JoinColumn(name = "student_id"),
-    //     inverseJoinColumns = @JoinColumn(name = "course_id")
-    // )
-    // private Set<Course> courses = new HashSet<>();
+    @JoinTable(
+        name = "demo_student_course",
+        joinColumns = @JoinColumn(name = "student_id"),
+        inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private Set<Course> courses = new HashSet<>();
 }
 
 

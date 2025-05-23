@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,7 +30,7 @@ public class Group {
     @Column(name="DESCRIPTION", unique = false, nullable = false, length = 100)
     private String description;
 
-    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Student> students = new ArrayList<>();
 
     public Long getId() {
