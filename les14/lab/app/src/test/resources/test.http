@@ -1,0 +1,22 @@
+GET http://localhost:8080/petshop/api/v1/order
+Authorization: Basic manager manager1234
+
+
+### Создать-заказ
+POST  http://localhost:8080/petshop/api/v1/order
+Authorization: Basic manager manager1234
+Content-Type: application/json
+
+{
+    "customerId" : 3,
+    "items":[
+        {
+            "productId" : 5,
+            "quantity" : 3
+        }, 
+        {
+            "productId" : 1,
+            "quantity" : 2
+        }
+    ]
+}
