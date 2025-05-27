@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #3498db;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        display: inline-block;
+    }
+    .btn:hover {
+        background-color: #2980b9;
+    }
+    .btn-danger {
+        background-color: #e74c3c;
+    }
+    .btn-danger:hover {
+        background-color: #c0392b;
+    }
+    form {
+        margin: 20px 0;
+    }
+    input, select {
+        padding: 8px;
+        margin: 5px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+</style>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать заказ</title>
+</head>
+<body>
+<h1>Создать заказ</h1>
+<form action="#" th:action="@{/orders/create}" method="post">
+    <label>Клиент:
+        <select name="customerId">
+            <option th:each="c : ${customers}" th:value="${c.id}" th:text="${c.name}"></option>
+        </select>
+    </label>
+    <br/><br/>
+    <label>Продукты:<br/>
+        <input type="checkbox" th:each="p : ${products}" th:name="productIds"
+               th:value="${p.id}" th:text="${p.name}"/>
+    </label>
+    <br/><br/>
+    <button type="submit">Создать</button>
+</form>
+</body>
+</html>
