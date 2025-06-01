@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+    <!-- Логирование Hibernate SQL-запросов -->
+  <logger name="org.hibernate.SQL" level="DEBUG"/>
+  <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+
+  <!-- Логирование транзакций Spring -->
+  <logger name="org.springframework.transaction" level="DEBUG"/>
+
+   <logger name="ru.bsuedu.cad.lab" level="DEBUG"/>
+
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
