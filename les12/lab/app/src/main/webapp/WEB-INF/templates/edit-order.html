@@ -1,0 +1,18 @@
+<!-- файл: src/main/webapp/WEB-INF/templates/edit-order.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактировать заказ</title>
+</head>
+<body>
+<h1>Редактировать заказ</h1>
+
+<form th:action="@{'/orders/edit/' + ${order.id}}" method="post">
+    <p>Статус: <input type="text" name="status" th:value="${order.status}" /></p>
+    <p>Адрес доставки: <input type="text" name="shippingAddress" th:value="${order.shippingAddress}" /></p>
+    <button type="submit">Сохранить</button>
+</form>
+
+<a th:href="@{/orders}">Назад к заказам</a>
+</body>
+</html>
