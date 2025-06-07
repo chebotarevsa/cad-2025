@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.bsuedu.cad.lab.AppTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-03-01T11:22:14" hostname="DESKTOP-DDVGQJN" time="0.017">
+  <properties/>
+  <testcase name="appHasAGreeting()" classname="ru.bsuedu.cad.lab.AppTest" time="0.017">
+    <failure message="java.lang.UnsupportedOperationException: Unimplemented method 'getGreeting'" type="java.lang.UnsupportedOperationException">java.lang.UnsupportedOperationException: Unimplemented method 'getGreeting'
+	at ru.bsuedu.cad.lab.App.getGreeting(App.java:18)
+	at ru.bsuedu.cad.lab.AppTest.appHasAGreeting(AppTest.java:12)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
