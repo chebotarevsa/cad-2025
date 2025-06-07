@@ -1,0 +1,16 @@
+{
+  "name": "Spring + Postgres DevContainer",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "settings": {
+    "java.home": "/usr/lib/jvm/java-17-openjdk-amd64"
+  },
+  "extensions": [
+    "vscjava.vscode-java-pack",
+    "ms-azuretools.vscode-docker",
+    "eamodio.gitlens"
+  ],
+  "forwardPorts": [8080],
+  "postCreateCommand": "./gradlew build"
+}
