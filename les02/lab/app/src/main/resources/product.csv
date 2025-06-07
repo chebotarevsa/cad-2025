@@ -1,4 +1,4 @@
-﻿product_id,name,description,category_id,price,stock_quantity,image_url,created_at,updated_at
+product_id,name,description,category_id,price,stock_quantity,image_url,created_at,updated_at
 1,Сухой корм для собак,Полнорационный корм для взрослых собак,1,1500,50,https://example.com/dog_food.jpg,2025-01-15,2025-02-01
 2,Игрушка для кошек "Мышка",Мягкая игрушка для игр,2,300,200,https://example.com/cat_toy.jpg,2025-01-16,2025-02-01
 3,Лакомство для попугаев,Зерновая смесь для птиц,3,500,100,https://example.com/bird_treats.jpg,2025-01-17,2025-02-01
