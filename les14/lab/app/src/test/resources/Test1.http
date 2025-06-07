@@ -1,0 +1,41 @@
+GET http://localhost:8080/petshop/api/order
+Authorization: Basic user:user
+
+
+###
+POST http://localhost:8080/petshop/api/order
+Authorization: Basic manager:manager
+Content-Type: application/json
+
+{
+    "customerId": 1,
+    "items":
+    [
+        {
+            "productId": 1,
+            "quantity": 7
+        },
+        {
+            "productId": 2,
+            "quantity": 5
+        }
+    ]
+}
+
+
+###
+DELETE http://localhost:8080/petshop/api/order/1
+Authorization: Basic manager:manager
+
+
+###
+PATCH http://localhost:8080/petshop/api/order/1/1
+Authorization: Basic manager:manager
+Content-Type: application/json
+
+{
+    
+    "productId": 2,
+    "quantity": 8
+        
+}
