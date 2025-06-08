@@ -1,0 +1,88 @@
+<!-- файл: src/main/webapp/WEB-INF/templates/edit-order.html -->
+<!DOCTYPE html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #3498db;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        display: inline-block;
+    }
+    .btn:hover {
+        background-color: #2980b9;
+    }
+    .btn-danger {
+        background-color: #e74c3c;
+    }
+    .btn-danger:hover {
+        background-color: #c0392b;
+    }
+    form {
+        margin: 20px 0;
+    }
+    input, select {
+        padding: 8px;
+        margin: 5px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+</style>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактировать заказ</title>
+</head>
+<body>
+<h1>Редактировать заказ</h1>
+
+<form th:action="@{'/orders/edit/' + ${order.id}}" method="post">
+    <p>Статус: <input type="text" name="status" th:value="${order.status}" /></p>
+    <p>Адрес доставки: <input type="text" name="shippingAddress" th:value="${order.shippingAddress}" /></p>
+    <button type="submit">Сохранить</button>
+</form>
+
+<a th:href="@{/orders}">Назад к заказам</a>
+</body>
+</html>
