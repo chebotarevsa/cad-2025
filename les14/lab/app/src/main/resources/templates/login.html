@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в систему</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body class="container pt-5">
+
+<h2>Авторизация</h2>
+
+<form th:action="@{/login}" method="post" class="form-group">
+    <label for="username">Логин:</label>
+    <input type="text" name="username" class="form-control" required>
+
+    <label for="password" class="mt-2">Пароль:</label>
+    <input type="password" name="password" class="form-control" required>
+
+    <button type="submit" class="btn btn-primary mt-3">Войти</button>
+</form>
+
+<div th:if="${param.error}">
+    <p class="text-danger">Неверный логин или пароль</p>
+</div>
+<div th:if="${param.logout}">
+    <p class="text-success">Вы вышли из системы</p>
+</div>
+
+</body>
+</html>
