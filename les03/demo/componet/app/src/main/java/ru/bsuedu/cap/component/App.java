@@ -15,5 +15,5 @@ public class App {
         Arrays.stream(ctx.getBeanDefinitionNames()).forEach(beanName -> System.out.println(beanName));
          Renderer mr = ctx.getBean("renderer", Renderer.class);
          mr.render();
-          }
     }
+}
