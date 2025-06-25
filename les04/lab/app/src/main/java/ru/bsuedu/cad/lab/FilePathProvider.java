@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource("application.properties")
 public class FilePathProvider {
-    @Value("${filename}")
+    @Value("${filename}") // реализация SPel для файла application.properties через переменную filename
     private String fileName;
 
     public String getFileName(){
