@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02134348-94aa-4004-b543-0dd702c22c7e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les04/READMElab4.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les07/demo/app/bin/main/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../les07/demo/app/bin/main/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les07/demo/app/bin/main/ru/bsuedu/cad/demo/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../les07/demo/app/bin/main/ru/bsuedu/cad/demo/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les07/demo/app/bin/main/ru/bsuedu/cad/demo/ConfigHibernate.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../les07/demo/app/bin/main/ru/bsuedu/cad/demo/ConfigHibernate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les07/demo/app/bin/main/ru/bsuedu/cad/demo/entities/AbstractEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les07/demo/app/bin/main/ru/bsuedu/cad/demo/entities/Course.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les07/demo/app/bin/main/ru/bsuedu/cad/demo/entities/Group.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les07/demo/app/bin/main/ru/bsuedu/cad/demo/entities/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/assets/category.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/assets/customer.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/assets/product.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/db/jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/import.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/ConfigBasic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/ConfigJpa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/app/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/entity/AbstractEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/entity/Course.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/entity/Group.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/entity/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/repository/GroupRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/repository/StudentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/service/GroupService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/main/ru/bsuedu/cad/demo/service/StudentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/bin/test/ru/bsuedu/cad/demo/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/data/testdb.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/data/testdb.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/ConfigBasic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/ConfigJpa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/app/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/entity/AbstractEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/entity/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/entity/Group.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/entity/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/repository/GroupRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/repository/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/service/GroupService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/java/ru/bsuedu/cad/demo/service/StudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/resources/db/jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/resources/import.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/app/src/test/java/ru/bsuedu/cad/demo/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/demo/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les08/lab.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/.gradle/8.9/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/.gradle/8.9/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/.gradle/8.9/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/.gradle/8.9/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/.gradle/8.9/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/src/main/java/com/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jackson_example/src/main/java/com/example/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/.gradle/8.9/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/.gradle/8.9/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/.gradle/8.9/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/.gradle/8.9/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/.gradle/8.9/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/src/main/java/com/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/demo/jaxb_example/src/main/java/com/example/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/lab.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2xsRcXGo9gD9FH9lztxlmEL9z7f" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/alecs/Desktop",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02134348-94aa-4004-b543-0dd702c22c7e" name="Changes" comment="" />
+      <created>1748724875025</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748724875025</updated>
+      <workItem from="1748724877309" duration="62000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

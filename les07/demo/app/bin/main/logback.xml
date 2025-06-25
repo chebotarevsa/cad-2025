@@ -6,7 +6,12 @@
     </encoder>
   </appender>
 
- <logger name="com.myapp" level="DEBUG"/>
+    <!-- Логирование Hibernate SQL-запросов -->
+  <logger name="org.hibernate.SQL" level="DEBUG"/>
+  <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+
+  <!-- Логирование транзакций Spring -->
+  <logger name="org.springframework.transaction" level="DEBUG"/>
 
   <root level="debug">
     <appender-ref ref="STDOUT" />
