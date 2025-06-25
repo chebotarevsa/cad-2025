@@ -177,12 +177,6 @@ public class DataBaseRenderer implements Renderer{
         product.getPrice(), product.getStockQuantity(), product.getImageURL(), product.getCreatedAt(), product.getUpdatedAt());
     }
 
-    public List<Category> categoryRequest(){
-        String sql = "SELECT * FROM Categories WHERE category_id IN (SELECT Products.category_id FROM Categories JOIN Products on Categories.category_id = Products.category_id GROUP BY Products.category_id HAVING COUNT(Products.category_id) > 1)";
-        // String sql = "SELECT * FROM Categories WHERE category_id IN (SELECT category_id FROM Products WHERE stock_quantity > 1)";
-        return jdbcTemplate.query(sql, categoryRowMapper());
-    }
-
     private RowMapper<Category> categoryRowMapper() {
         return (rs, rowNum) -> new Category(
                 rs.getInt("category_id"),
@@ -214,6 +208,7 @@ public List<Category> categoryRequest(){
     }
 
 ```
+
 
 ## Выводы
 
