@@ -2,5 +2,6 @@
     "java.compile.nullAnalysis.mode": "automatic",
     "cSpell.words": [
         "утановлена"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
