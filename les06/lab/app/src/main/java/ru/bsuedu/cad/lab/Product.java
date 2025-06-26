@@ -14,7 +14,6 @@ public class Product {
     private Date createdAt;
     private Date updatedAt;
 
-    // Конструкторы, геттеры и сеттеры.
     public Product(long productId, String name, String description, int categoryId, BigDecimal price, int stockQuantity, String imageUrl, Date createdAt, Date updatedAt) {
         this.productId = productId;
         this.name = name;
@@ -27,7 +26,6 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
-    // Геттеры
     public long getProductId() { return productId; }
     public String getName() { return name; }
     public String getDescription() { return description; }

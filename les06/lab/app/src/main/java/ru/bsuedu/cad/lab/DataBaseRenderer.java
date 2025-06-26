@@ -27,7 +27,7 @@ public class DataBaseRenderer implements Renderer {
     public void render() {
         insertCategories();
         insertProducts();
-        System.out.println("Информация успешно интегрирована в реляционную базу данных.");
+        System.out.println("Данные успешно сохранены в базу данных.");
     }
 
     private void insertCategories() {

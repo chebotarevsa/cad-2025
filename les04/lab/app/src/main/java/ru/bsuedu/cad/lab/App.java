@@ -15,7 +15,6 @@ public class App {
     }
 
     public Object getGreeting() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getGreeting'");
     }
 }

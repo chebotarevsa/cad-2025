@@ -79,7 +79,6 @@ public class Config {
         vendorAdapter.setDatabasePlatform("org.hibernate.dialect.H2Dialect");
         em.setJpaVendorAdapter(vendorAdapter);
 
-        // Дополнительные свойства JPA/Hibernate
         Properties properties = new Properties();
         properties.put(Environment.HBM2DDL_AUTO, "create-drop");
         properties.put(Environment.DIALECT, "org.hibernate.dialect.H2Dialect");

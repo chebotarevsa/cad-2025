@@ -22,14 +22,12 @@ public class CategoryRequest {
     }
 
     public void execute() {
-        // Запрос SQL для извлечения категорий, в которых количество ассоциированных товаров превышает единицу.
         String sql = "SELECT c.category_id, c.name, COUNT(p.product_id) AS product_count " +
                      "FROM CATEGORIES c " +
                      "JOIN PRODUCTS p ON c.category_id = p.category_id " +
                      "GROUP BY c.category_id " +
                      "HAVING COUNT(p.product_id) > 1";
 
-        // Производим обработку запроса и осуществляем отображение полученных данных в соответствии с установленными параметрами.
         List<CategoryWithProductCount> result = jdbcTemplate.query(sql, new RowMapper<CategoryWithProductCount>() {
             @Override
             public CategoryWithProductCount mapRow(java.sql.ResultSet rs, int rowNum) throws java.sql.SQLException {
@@ -41,7 +39,6 @@ public class CategoryRequest {
             }
         });
 
-        // Осуществляем документирование информации (логирование)
         if (result.isEmpty()) {
             logger.info("Нет категорий с количеством товаров больше единицы.");
         } else {
@@ -50,7 +47,6 @@ public class CategoryRequest {
         }
     }
 
-    // Вспомогательный класс для хранения результатов запроса
     public static class CategoryWithProductCount {
         private int categoryId;
         private String name;

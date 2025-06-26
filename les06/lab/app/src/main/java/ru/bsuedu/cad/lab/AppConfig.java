@@ -22,7 +22,7 @@ public class AppConfig {
     public DataSource dataSource() {
         EmbeddedDatabase db = new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
-                .addScript("classpath:schema.sql") // Скрипт осуществляет генерацию таблиц
+                .addScript("classpath:schema.sql")
                 .build();
         return db;
     }

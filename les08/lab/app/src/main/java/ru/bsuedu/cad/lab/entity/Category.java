@@ -24,7 +24,6 @@ public class Category {
         this.description = description;
     }
 
-
     public Long getCategoryId() {
         return categoryId;
     }
@@ -38,7 +37,6 @@ public class Category {
     public String getName() {
         return name;
     }
-
 
     public void setName(String name) {
         this.name = name;
