@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077118a5-4ee3-40c5-b17b-7144a8c0185d" name="Changes" comment="Lab4 Commit" />
+    <list default="true" id="077118a5-4ee3-40c5-b17b-7144a8c0185d" name="Changes" comment="Lab4 Commit">
+      <change beforePath="$PROJECT_DIR$/../../les08/lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../les08/lab/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +44,12 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="product-table" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -54,6 +62,7 @@
       <list>
         <option value="HTML File" />
         <option value="Interface" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -116,6 +125,7 @@
     "Gradle.Download Sources.executor": "Run",
     "Gradle.lab [build].executor": "Run",
     "Gradle.lab [init --package ru.bsuedu.cad.lab].executor": "Run",
+    "Gradle.lab [war].executor": "Run",
     "Gradle.lab:app [:app:ru.bsuedu.cad.lab.App.main()].executor": "Run",
     "Gradle.lab:app [:app:ru.bsuedu.cad.lab.MainApp.main()].executor": "Run",
     "Gradle.lab:app [:app:ru.bsuedu.cad.lab.app.App.main()].executor": "Run",
@@ -150,14 +160,14 @@
       <recent name="C:\Users\Ivan0\cad-2025\les02\lab\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ivan0\cad-2025\les10\lab\app\src\main\resources" />
       <recent name="C:\Users\Ivan0\cad-2025\les08\lab\app\src\main\resources" />
       <recent name="C:\Users\Ivan0\cad-2025\les06\lab\app\src\main\resources" />
       <recent name="C:\Users\Ivan0\cad-2025\les04\lab\app\src\main\resources" />
       <recent name="C:\Users\Ivan0\cad-2025\les04\lab" />
-      <recent name="C:\Users\Ivan0\cad-2025\les02\lab" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.OrderApplication">
+  <component name="RunManager" selected="Gradle.lab [war]">
     <configuration name="OrderApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.bsuedu.cad.lab.app.OrderApplication" />
       <module name="product-table.app.main" />
@@ -193,8 +203,31 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="lab [war]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="war" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.lab [war]" />
         <item itemvalue="Gradle.lab [build]" />
         <item itemvalue="Application.OrderApplication" />
       </list>
@@ -238,6 +271,7 @@
       <workItem from="1750887980558" duration="26000" />
       <workItem from="1750930539846" duration="1253000" />
       <workItem from="1750931853927" duration="2036000" />
+      <workItem from="1750941956439" duration="5657000" />
     </task>
     <task id="LOCAL-00001" summary="Lab1 Commit">
       <option name="closed" value="true" />
