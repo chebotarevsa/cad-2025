@@ -64,6 +64,7 @@ WebApplicationContext context = WebApplicationContextUtils
         .getRequiredWebApplicationContext(getServletContext());
 MyService service = context.getBean(MyService.class);
 
+
 ```
 8. Что делает `ContextLoaderListener` в Spring-приложении?
 
