@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="077118a5-4ee3-40c5-b17b-7144a8c0185d" name="Changes" comment="Lab5 Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../les10/lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../les10/lab/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +60,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Jsp File" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -125,17 +125,19 @@
     "Gradle.Download Sources.executor": "Run",
     "Gradle.lab [build].executor": "Run",
     "Gradle.lab [init --package ru.bsuedu.cad.lab].executor": "Run",
+    "Gradle.lab [jar].executor": "Run",
     "Gradle.lab [war].executor": "Run",
     "Gradle.lab:app [:app:ru.bsuedu.cad.lab.App.main()].executor": "Run",
     "Gradle.lab:app [:app:ru.bsuedu.cad.lab.MainApp.main()].executor": "Run",
     "Gradle.lab:app [:app:ru.bsuedu.cad.lab.app.App.main()].executor": "Run",
     "Gradle.lab:app [:app:ru.bsuedu.cad.lab.app.OrderApplication.main()].executor": "Run",
+    "HTTP Request.generated-requests | #1.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Ivan0/cad-2025/les08/lab",
+    "last_opened_file_path": "C:/Users/Ivan0/cad-2025/les12/lab",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -166,21 +168,11 @@
       <recent name="C:\Users\Ivan0\cad-2025\les04\lab\app\src\main\resources" />
       <recent name="C:\Users\Ivan0\cad-2025\les04\lab" />
     </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="ru.bsuedu.cad.lab.controller" />
+    </key>
   </component>
   <component name="RunManager" selected="Gradle.lab [war]">
-    <configuration name="OrderApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.bsuedu.cad.lab.app.OrderApplication" />
-      <module name="product-table.app.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.bsuedu.cad.lab.app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="lab [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -193,6 +185,28 @@
         <option name="taskNames">
           <list>
             <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="lab [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -228,8 +242,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.lab [war]" />
+        <item itemvalue="Gradle.lab [jar]" />
         <item itemvalue="Gradle.lab [build]" />
-        <item itemvalue="Application.OrderApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +285,9 @@
       <workItem from="1750887980558" duration="26000" />
       <workItem from="1750930539846" duration="1253000" />
       <workItem from="1750931853927" duration="2036000" />
-      <workItem from="1750941956439" duration="6508000" />
+      <workItem from="1750941956439" duration="6475000" />
+      <workItem from="1750969758538" duration="4042000" />
+      <workItem from="1751012935908" duration="11459000" />
     </task>
     <task id="LOCAL-00001" summary="Lab1 Commit">
       <option name="closed" value="true" />

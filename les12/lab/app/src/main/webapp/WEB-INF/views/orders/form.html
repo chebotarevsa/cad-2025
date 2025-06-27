@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Создание заказа</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    .product-item {
+      margin-bottom: 15px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-4">
+  <h1>Создание нового заказа</h1>
+  <form th:action="@{/orders}" method="post">
+    <div class="mb-3">
+      <label for="customer" class="form-label">Покупатель</label>
+      <select class="form-select" id="customer" th:field="*{order.customer.id}" required>
+        <option value="">Выберите покупателя</option>
+        <option th:each="customer : ${customers}"
+                th:value="${customer.id}"
+                th:text="${customer.name}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="shippingAddress" class="form-label">Адрес доставки</label>
+      <input type="text" class="form-control" id="shippingAddress"
+             th:field="*{order.shippingAddress}" required>
+    </div>
+
+    <h4>Выберите товары:</h4>
+    <div th:each="product : ${products}" class="product-item">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"
+               th:id="'product_' + ${product.id}"
+               th:name="productIds"
+               th:value="${product.id}">
+        <label class="form-check-label" th:for="'product_' + ${product.id}">
+          <span th:text="${product.name} + ' (' + ${product.price} + ' руб.)'"></span>
+        </label>
+      </div>
+      <div class="mt-2">
+        <label th:for="'quantity_' + ${product.id}" class="form-label">Количество:</label>
+        <input type="number" class="form-control"
+               th:name="quantities"
+               th:id="'quantity_' + ${product.id}"
+               min="1" value="1" style="width: 100px;">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Создать заказ</button>
+    <a th:href="@{/orders}" class="btn btn-secondary mt-3">Отмена</a>
+  </form>
+</div>
+</body>
+</html>
