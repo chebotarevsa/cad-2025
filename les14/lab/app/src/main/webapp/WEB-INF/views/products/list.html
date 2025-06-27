@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Товары</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>В наличии (шт.)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.category.name}"></td>
+            <td th:text="${product.price} + ' руб.'"></td>
+            <td th:text="${product.stockQuantity}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
