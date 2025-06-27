@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077118a5-4ee3-40c5-b17b-7144a8c0185d" name="Changes" comment="Lab5 Commit">
-      <change beforePath="$PROJECT_DIR$/../../les10/lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../les10/lab/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="077118a5-4ee3-40c5-b17b-7144a8c0185d" name="Changes" comment="Lab6 Commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -287,7 +285,7 @@
       <workItem from="1750931853927" duration="2036000" />
       <workItem from="1750941956439" duration="6475000" />
       <workItem from="1750969758538" duration="4042000" />
-      <workItem from="1751012935908" duration="11459000" />
+      <workItem from="1751012935908" duration="12269000" />
     </task>
     <task id="LOCAL-00001" summary="Lab1 Commit">
       <option name="closed" value="true" />
@@ -353,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750947879582</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Lab6 Commit">
+      <option name="closed" value="true" />
+      <created>1751038319282</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1751038319282</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,7 +414,8 @@
     <MESSAGE value="Lab2 Commit" />
     <MESSAGE value="Lab4 Commit" />
     <MESSAGE value="Lab5 Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lab5 Commit" />
+    <MESSAGE value="Lab6 Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab6 Commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
