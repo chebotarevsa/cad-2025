@@ -162,11 +162,11 @@
       <recent name="C:\Users\Ivan0\cad-2025\les02\lab\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ivan0\cad-2025\les14\lab\app\src\main\java\ru\bsuedu\cad\lab" />
+      <recent name="C:\Users\Ivan0\cad-2025\les14\lab\app\src\main\resources" />
       <recent name="C:\Users\Ivan0\cad-2025\les10\lab\app\src\main\resources" />
       <recent name="C:\Users\Ivan0\cad-2025\les08\lab\app\src\main\resources" />
       <recent name="C:\Users\Ivan0\cad-2025\les06\lab\app\src\main\resources" />
-      <recent name="C:\Users\Ivan0\cad-2025\les04\lab\app\src\main\resources" />
-      <recent name="C:\Users\Ivan0\cad-2025\les04\lab" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="ru.bsuedu.cad.lab.controller" />
@@ -313,7 +313,7 @@
       <workItem from="1751012935908" duration="11459000" />
       <workItem from="1751043617057" duration="980000" />
       <workItem from="1751044615733" duration="411000" />
-      <workItem from="1751045039422" duration="2842000" />
+      <workItem from="1751045039422" duration="3153000" />
     </task>
     <task id="LOCAL-00001" summary="Lab1 Commit">
       <option name="closed" value="true" />
@@ -395,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751047840606</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Lab7 Commit">
+      <option name="closed" value="true" />
+      <created>1751048160601</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1751048160601</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
