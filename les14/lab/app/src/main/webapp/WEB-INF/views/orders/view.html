@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Просмотр заказа</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+  <h1>Заказ #<span th:text="${order.id}"></span></h1>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5>Информация о заказе</h5>
+    </div>
+    <div class="card-body">
+      <p><strong>Покупатель:</strong> <span th:text="${order.customer.name}"></span></p>
+      <p><strong>Дата заказа:</strong> <span th:text="${#temporals.format(order.orderDate, 'dd.MM.yyyy HH:mm')}"></span></p>
+      <p><strong>Статус:</strong> <span th:text="${order.status}"></span></p>
+      <p><strong>Адрес доставки:</strong> <span th:text="${order.shippingAddress}"></span></p>
+      <p><strong>Общая сумма:</strong> <span th:text="${order.totalPrice} + ' руб.'"></span></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>Товары в заказе</h5>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Товар</th>
+          <th>Цена</th>
+          <th>Количество</th>
+          <th>Сумма</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="detail : ${order.orderDetails}">
+          <td th:text="${detail.product.name}"></td>
+          <td th:text="${detail.price} + ' руб.'"></td>
+          <td th:text="${detail.quantity}"></td>
+          <td th:text="${detail.price * detail.quantity} + ' руб.'"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <a th:href="@{/orders}" class="btn btn-secondary mt-3">Назад к списку</a>
+</div>
+</body>
+</html>
