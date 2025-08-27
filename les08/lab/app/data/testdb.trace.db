@@ -1,0 +1,33 @@
+2025-03-28 18:44:03.661919+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO Categories (category_id, name, description) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO Categories (category_id, name, description) VALUES [42001-224]
+2025-03-28 18:44:03.663921+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]1, 'РљРѕСЂРјР°', 'РЎСѓС…РёРµ Рё РІР»Р°Р¶РЅС‹Рµ РєРѕСЂРјР° РґР»СЏ РґРѕРјР°С€РЅРёС… Р¶РёРІРѕС‚РЅС‹С…'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(1, 'РљРѕСЂРјР°', 'РЎСѓС…РёРµ Рё РІР»Р°Р¶РЅС‹Рµ РєРѕСЂРјР° РґР»СЏ РґРѕРјР°С€РЅРёС… Р¶РёРІРѕС‚РЅС‹С…'), [42001-224]
+2025-03-28 18:44:03.664922+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]2, 'Р�РіСЂСѓС€РєРё', 'Р�РіСЂСѓС€РєРё РґР»СЏ СЃРѕР±Р°Рє, РєРѕС€РµРє Рё РґСЂСѓРіРёС… РїРёС‚РѕРјС†РµРІ'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(2, 'Р�РіСЂСѓС€РєРё', 'Р�РіСЂСѓС€РєРё РґР»СЏ СЃРѕР±Р°Рє, РєРѕС€РµРє Рё РґСЂСѓРіРёС… РїРёС‚РѕРјС†РµРІ'), [42001-224]
+2025-03-28 18:44:03.665924+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]3, 'Р›Р°РєРѕРјСЃС‚РІР°', 'РџРѕР»РµР·РЅС‹Рµ Рё РІРєСѓСЃРЅС‹Рµ Р»Р°РєРѕРјСЃС‚РІР° РґР»СЏ Р¶РёРІРѕС‚РЅС‹С…'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(3, 'Р›Р°РєРѕРјСЃС‚РІР°', 'РџРѕР»РµР·РЅС‹Рµ Рё РІРєСѓСЃРЅС‹Рµ Р»Р°РєРѕРјСЃС‚РІР° РґР»СЏ Р¶РёРІРѕС‚РЅС‹С…'), [42001-224]
+2025-03-28 18:44:03.666924+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]4, 'РђРєСЃРµСЃСЃСѓР°СЂС‹', 'Р\00a0Р°Р·Р»РёС‡РЅС‹Рµ Р°РєСЃРµСЃСЃСѓР°СЂС‹ РґР»СЏ РґРѕРјР°С€РЅРёС… РїРёС‚РѕРјС†РµРІ'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(4, 'РђРєСЃРµСЃСЃСѓР°СЂС‹', 'Р Р°Р·Р»РёС‡РЅС‹Рµ Р°РєСЃРµСЃСЃСѓР°СЂС‹ РґР»СЏ РґРѕРјР°С€РЅРёС… РїРёС‚РѕРјС†РµРІ'), [42001-224]
+2025-03-28 18:44:03.667925+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]5, 'РЎСЂРµРґСЃС‚РІР° СѓС…РѕРґР°', 'РЁР°РјРїСѓРЅРё, РіРµР»Рё, С‰РµС‚РєРё Рё РґСЂСѓРіРёРµ С‚РѕРІР°СЂС‹ РґР»СЏ СѓС…РѕРґР°'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(5, 'РЎСЂРµРґСЃС‚РІР° СѓС…РѕРґР°', 'РЁР°РјРїСѓРЅРё, РіРµР»Рё, С‰РµС‚РєРё Рё РґСЂСѓРіРёРµ С‚РѕРІР°СЂС‹ РґР»СЏ СѓС…РѕРґР°'), [42001-224]
+2025-03-28 18:44:03.668926+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]6, 'РђРєРІР°СЂРёСѓРјРёСЃС‚РёРєР°', 'РђРєРІР°СЂРёСѓРјС‹, С„РёР»СЊС‚СЂС‹, РґРµРєРѕСЂР°С†РёРё Рё Р°РєСЃРµСЃСЃСѓР°СЂС‹ РґР»СЏ СЂС‹Р±'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(6, 'РђРєРІР°СЂРёСѓРјРёСЃС‚РёРєР°', 'РђРєРІР°СЂРёСѓРјС‹, С„РёР»СЊС‚СЂС‹, РґРµРєРѕСЂР°С†РёРё Рё Р°РєСЃРµСЃСЃСѓР°СЂС‹ РґР»СЏ СЂС‹Р±'), [42001-224]
+2025-03-28 18:44:03.669927+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]7, 'РќР°РїРѕР»РЅРёС‚РµР»Рё', 'РќР°РїРѕР»РЅРёС‚РµР»Рё РґР»СЏ РєРѕС€Р°С‡СЊРёС… С‚СѓР°Р»РµС‚РѕРІ Рё РєР»РµС‚РѕРє'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(7, 'РќР°РїРѕР»РЅРёС‚РµР»Рё', 'РќР°РїРѕР»РЅРёС‚РµР»Рё РґР»СЏ РєРѕС€Р°С‡СЊРёС… С‚СѓР°Р»РµС‚РѕРІ Рё РєР»РµС‚РѕРє'), [42001-224]
+2025-03-28 18:44:03.670928+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]8, 'РљР»РµС‚РєРё', 'РљР»РµС‚РєРё Рё РІРѕР»СЊРµСЂС‹ РґР»СЏ РїС‚РёС†, РіСЂС‹Р·СѓРЅРѕРІ Рё РґСЂСѓРіРёС… Р¶РёРІРѕС‚РЅС‹С…'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(8, 'РљР»РµС‚РєРё', 'РљР»РµС‚РєРё Рё РІРѕР»СЊРµСЂС‹ РґР»СЏ РїС‚РёС†, РіСЂС‹Р·СѓРЅРѕРІ Рё РґСЂСѓРіРёС… Р¶РёРІРѕС‚РЅС‹С…'), [42001-224]
+2025-03-28 18:44:03.671929+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]9, 'РђРјСѓРЅРёС†РёСЏ', 'РџРѕРІРѕРґРєРё, РѕС€РµР№РЅРёРєРё, РЅР°РјРѕСЂРґРЅРёРєРё Рё РїСЂРѕС‡РёРµ С‚РѕРІР°СЂС‹'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(9, 'РђРјСѓРЅРёС†РёСЏ', 'РџРѕРІРѕРґРєРё, РѕС€РµР№РЅРёРєРё, РЅР°РјРѕСЂРґРЅРёРєРё Рё РїСЂРѕС‡РёРµ С‚РѕРІР°СЂС‹'), [42001-224]
+2025-03-28 18:44:03.672930+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]10, 'Р’РµС‚РµСЂРёРЅР°СЂРёСЏ', 'Р’РёС‚Р°РјРёРЅС‹, Р»РµРєР°СЂСЃС‚РІР° Рё РїСЂРѕС„РёР»Р°РєС‚РёС‡РµСЃРєРёРµ СЃСЂРµРґСЃС‚РІР°')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(10, 'Р’РµС‚РµСЂРёРЅР°СЂРёСЏ', 'Р’РёС‚Р°РјРёРЅС‹, Р»РµРєР°СЂСЃС‚РІР° Рё РїСЂРѕС„РёР»Р°РєС‚РёС‡РµСЃРєРёРµ СЃСЂРµРґСЃС‚РІР°') [42001-224]
