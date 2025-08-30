@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Создание заказа</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="mb-4">Создать заказ</h1>
+
+    <form th:action="@{/orders}" th:object="${order}" method="post">
+        <div class="mb-3">
+            <label for="customerId" class="form-label">ID Покупателя</label>
+            <input type="number" class="form-control" id="customerId" th:field="*{customerId}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="productId" class="form-label">ID Продукта</label>
+            <input type="number" class="form-control" id="productId" name="details[0].productId" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Количество</label>
+            <input type="number" class="form-control" id="quantity" name="details[0].quantity" required>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Создать</button>
+            <a th:href="@{/orders}" class="btn btn-outline-secondary">Отменить</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
