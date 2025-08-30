@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+	  <meta charset="UTF-8">
+    <title>Список заказов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Заказы</h1>
+        <a th:href="@{/orders/new}" class="btn btn-primary mb-3">Создать заказ</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Дата</th>
+                    <th>Стоимость</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.orderDate}"></td>
+                    <td th:text="${order.totalPrice}"></td>
+                    <td th:text="${order.status}"></td>
+                    <td>
+                        <a th:href="@{/orders/{id}(id=${order.orderId})}" class="btn btn-info btn-sm">Просмотр</a>
+                        <a th:href="@{/orders/{id}/edit(id=${order.orderId})}" class="btn btn-warning btn-sm">Изменить</a>
+                        <form th:action="@{/orders/{id}/delete(id=${order.orderId})}" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
