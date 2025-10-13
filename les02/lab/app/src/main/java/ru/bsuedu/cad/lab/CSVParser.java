@@ -1,8 +1,10 @@
 package ru.bsuedu.cad.lab;
 
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CSVParser implements Parser {
     @Override
     public List<Product> parse(List<String> lines) {

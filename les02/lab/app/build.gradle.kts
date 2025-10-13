@@ -17,7 +17,8 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter") // Это включает spring-context
+    implementation("org.springframework.boot:spring-boot-starter-aop")  
+    implementation("org.springframework.boot:spring-boot-starter")  
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

@@ -1,17 +1,17 @@
 package ru.bsuedu.cad.lab;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ResourceFileReader implements Reader {
-    private final String filePath;
-
-    public ResourceFileReader(String filePath) {
-        this.filePath = filePath;
-    }
+    @Value("${app.products.file:products.csv}")
+    private String filePath;
 
     @Override
     public List<String> read() {
