@@ -1,0 +1,22 @@
+<!-- <configuration>
+  Уровень логирования по умолчанию
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+  Подключение стандартного консольного аппендера
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  Для твоего приложения — оставляем INFO
+  <logger name="ru.bsuedu.cad.lab" level="INFO"/>
+
+  Для Hibernate и Spring — отключаем DEBUG
+  <logger name="org.hibernate" level="WARN"/>
+  <logger name="org.springframework" level="WARN"/>
+  <logger name="com.zaxxer.hikari" level="WARN"/>
+
+</configuration> -->
