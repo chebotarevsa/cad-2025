@@ -60,3 +60,4 @@ classDiagram
     CategoryRequest -- JdbcTemplate
     Main -- DataBaseRenderer
     Main -- CategoryRequest
+    ```
