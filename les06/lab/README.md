@@ -1,22 +1,62 @@
-# Отчёт по лабораторной работе 1
+# Отчёт по лабораторной работе 4
 
 ## Тема
-Gradle. Базовое приложение Spring
+Технологии работы с базами данных. JDBC
 
 ## Цель работы
-Создать консольное приложение с использованием Spring Framework, которое читает данные о товарах из CSV-файла и выводит их в консоль в виде таблицы.
+Подключить H2 БД, создать таблицы, сохранить данные, выполнить запрос с логами.
 
 ## Выполненные действия
-1. Установлен JDK 17.0.15 и Gradle 8.14.
-2. Создан проект с помощью Gradle с параметрами: пакет `ru.bsuedu.cad.lab`, имя проекта `product-table`.
-3. Добавлена зависимость через Spring Boot (`spring-boot-starter`).
-4. Реализованы классы: `Product`, `ResourceFileReader`, `CSVParser`, `ConcreteProductProvider`, `ConsoleTableRenderer`.
-5. Настроена Java-конфигурация через `AppConfig`.
-6. Создан CSV-файл `products.csv` в `src/main/resources`.
-7. Приложение запускается через `gradle run` и выводит таблицу товаров.
+1. Скопирован проект из les04/lab.
+2. Добавлены зависимости H2, starter-jdbc, logback.
+3. Создан schema.sql для таблиц CATEGORIES и PRODUCTS.
+4. Настроен EmbeddedDatabaseBuilder в Main.java.
+5. Создан Category, CategoryProvider, ConcreteCategoryProvider и category.csv.
+6. Реализован DataBaseRenderer для сохранения в БД.
+7. Реализован CategoryRequest для запроса и логирования INFO.
+8. Запуск через gradle run работает.
 
 ## Результат
-Приложение успешно читает данные из `products.csv` и выводит их в консоль в виде таблицы.
+БД запускается, данные сохраняются, запрос выводит логи.
 
-## ФИО и группа
-Тененёв С. С., 12002308
+
+```mermaid
+classDiagram
+    class Product {
+        -int productId
+        -String name
+        -String description
+        -int categoryId
+        -double price
+        -int stockQuantity
+        -String imageUrl
+        -Timestamp createdAt
+        -Timestamp updatedAt
+    }
+    class Category {
+        -int categoryId
+        -String name
+        -String description
+    }
+    class CategoryProvider {
+        <<interface>>
+        +List~Category~ getCategories()
+    }
+    class ConcreteCategoryProvider {
+        -String filePath
+        +List~Category~ getCategories()
+    }
+    class DataBaseRenderer {
+        -JdbcTemplate jdbcTemplate
+        +void render(List~Product~)
+    }
+    class CategoryRequest {
+        -JdbcTemplate jdbcTemplate
+        +void executeQuery()
+    }
+    Product }|..|| Category : categoryId
+    ConcreteCategoryProvider ..|> CategoryProvider
+    DataBaseRenderer ..|> Renderer
+    CategoryRequest -- JdbcTemplate
+    Main -- DataBaseRenderer
+    Main -- CategoryRequest

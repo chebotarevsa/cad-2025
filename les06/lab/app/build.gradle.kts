@@ -23,7 +23,6 @@ dependencies {
     implementation("com.h2database:h2:2.2.224")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("ch.qos.logback:logback-classic:1.4.14")
-    implementation("org.apache.commons:commons-csv:1.10.0")  // Для CSV
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
