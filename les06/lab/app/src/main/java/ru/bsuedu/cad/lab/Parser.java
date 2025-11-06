@@ -2,6 +2,7 @@ package ru.bsuedu.cad.lab;
 
 import java.util.List;
 
-public interface Parser {
-    List<Product> parse(List<String> lines);
+public interface  Parser {
+    public <T> List<T> parse(Class<T> clazz, String text);
+
 }

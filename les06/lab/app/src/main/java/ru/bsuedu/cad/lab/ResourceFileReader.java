@@ -1,39 +1,77 @@
 package ru.bsuedu.cad.lab;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.xml.crypto.Data;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
-import jakarta.annotation.PostConstruct;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-@Component
+import jakarta.annotation.PostConstruct;
+
+
+@Component("reader")
 public class ResourceFileReader implements Reader {
-    @Value("${app.products.file:products.csv}")
-    private String filePath;
+
+    // SPeL
+    // @Value("#{propertyProvider.fileName}")
+    private String[] path;
+
+    // Конструктор
+    public ResourceFileReader(PropertyProvider propertyProvider){
+        path = propertyProvider.getFileName();
+    }
+
+    
 
     @PostConstruct
     public void init() {
-        System.out.println("ResourceFileReader initialized at " + new Date());
+        Date currentTime = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+        String currentDateTime = dateFormat.format(currentTime);
+        System.out.println(currentDateTime);
     }
 
-    @Override
-    public List<String> read() {
-        List<String> lines = new ArrayList<>();
+    public String read(int indexFile){
+        
+        Resource resource = new ClassPathResource(path[indexFile]);
+        
         try {
-            ClassPathResource resource = new ClassPathResource(filePath);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                lines.add(line);
-            }
-            reader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+            return new String(Files.readAllBytes(Paths.get(resource.getURI())));
+
+            // StringBuffer text = new StringBuffer("");
+            // String line;
+            
+            // while (true){
+
+            //     line = buffReader.readLine();
+            //     if (line == null) break;
+            //     text.append(line);
+            //     text.append("\n");
+
+            // }
+            
+            
+            // return text.toString();
         }
-        return lines;
-    }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+            return null;
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+        
+        
+    } 
+
+    
 }
