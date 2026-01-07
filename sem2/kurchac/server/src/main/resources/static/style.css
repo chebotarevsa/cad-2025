@@ -1,0 +1,78 @@
+input {
+	border-radius: 50px;
+	padding: 5px 10px;
+}
+button {
+	display: inline-block;	
+	box-sizing: border-box;
+	padding: 5px 10px;
+	outline: none;
+	border-radius: 50px;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #000;
+	background-color: #fff;
+	cursor: pointer;
+	user-select: none;
+	appearance: none;
+	touch-action: manipulation;  
+	vertical-align: top;
+	transition: box-shadow 0.2s;
+}
+button:focus-visible {
+	border: 1px solid #4c51f9;
+	outline: none;
+}
+button:hover {
+	transition: all 0.2s;
+	color: #fff;
+	background-color: #000;
+}
+button:active {
+	background-color: #808080;
+}
+button:disabled {
+	background-color: #eee;
+	border-color: #eee;
+	color: #444;
+	cursor: not-allowed;
+}
+table {
+	border: none;
+	margin-bottom: 20px;
+}
+table td {
+    width: 200px;
+}
+table thead th {
+	width: 200px;
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: #d8d8d8;
+	font-size: 14px;
+}
+table thead tr th:first-child {
+	border-radius: 8px 0 0 8px;
+}
+table thead tr th:last-child {
+	border-radius: 0 8px 8px 0;
+}
+table tbody td {
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+table tbody tr:nth-child(even){
+	background: #f3f3f3;
+}
+table tbody tr td:first-child {
+	border-radius: 8px 0 0 8px;
+}
+table tbody tr td:last-child {
+	border-radius: 0 8px 8px 0;
+}

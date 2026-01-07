@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>ToDo Tracker</title>
+    </head>
+    <body>
+        <h2>confirm the deletion</h2>
+        <p>Do you really want to delete the task?:</p>
+        <strong th:text="${task.title}"></strong>
+        <p th:if="${task.description}" th:text="${task.description}"></p>
+
+        <div>
+            <!-- Форма удаления -->
+            <form th:action="@{/deleteTask/{id}(id=${task.id})}" method="get">
+                <button type="submit">Yes, delete</button>
+            </form>
+
+            <!-- Кнопка "Отмена" — возврат на главную -->
+            <a href="/">
+                <button type="button">Cancel</button>
+            </a>
+        </div>
+    </body>
+</html>

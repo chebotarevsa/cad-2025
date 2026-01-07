@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>ToDo List</h1>
+    <!-- Здесь будут отображаться задачи -->
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.title}"></td>
+                <td th:text="${task.description}"></td>
+                <td th:text="${task.category}"></td>
+                <td th:text="${#temporals.format(task.deadLine, 'dd.MM.yyyy HH:mm')}"></td>
+                <td th:text="${task.completed ? 'Completed' : 'Pending'}"></td>
+                <td th:text="${task.author.name}"></td>
+                <td>
+                    <form th:action="@{/confirmDeleteTask/{id}(id=${task.id})}" method="get">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/updateTask/{id}(id=${task.id})}" method="post" style="display:inline;">
+                        <input type="hidden" name="completed" th:value="true" th:if="${!task.completed}">
+                        <input type="hidden" name="completed" th:value="false" th:if="${task.completed}">
+                        <button type="submit"
+                            th:text="${task.completed ? 'Mark as Pending' : 'Mark as Completed'}"></button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Add New Task</h2>
+    <form th:action="@{/addTask}" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title">
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category">
+
+        <label for="deadLine">Deadline:</label>
+        <input type="datetime-local" id="deadLine" name="deadLine">
+
+        <button type="submit">Add Task</button>
+    </form>
+</body>
+
+</html>
