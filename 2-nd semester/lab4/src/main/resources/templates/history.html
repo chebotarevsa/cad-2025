@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>История сотрудников</title>
+</head>
+<body>
+    <h1>История сотрудников</h1>
+    <a href="/">Обратно к списку сотрудников</a>
+    <ul th:if="${!#lists.isEmpty(history)}">
+        <li th:each="entry : ${history}">
+            <strong>Действие:</strong> <span th:text="${entry.action}"></span>
+            <strong>Поле:</strong> <span th:text="${entry.field}"></span>
+            <strong>Старое значение:</strong> <span th:text="${entry.oldValue}"></span>
+            <strong>Новое значение:</strong> <span th:text="${entry.newValue}"></span>
+            <strong>Кем изменено:</strong> <span th:text="${entry.changedBy}"></span>
+            <strong>Время:</strong> <span th:text="${entry.timestamp}"></span>
+        </li>
+    </ul>
+    <p th:if="${#lists.isEmpty(history)}">Записи об изменениях не найдены</p>
+</body>
+</html>
