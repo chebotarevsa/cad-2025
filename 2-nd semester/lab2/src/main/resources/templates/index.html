@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Сотрудники</title>
+</head>
+<body>
+    <h1>Список сотрудников</h1>
+    
+    <!-- Отладочная информация -->
+    <p>Количество работников в списке: <strong th:text="${#lists.size(employees)}"></strong></p>
+    
+    <!-- Форма поиска -->
+    <h2>Поиск пользователей по фамилии</h2>
+    <form th:action="@{/search}" method="get">
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" name="lastName">
+        <button type="submit">Поиск</button>
+    </form>
+    <p th:if="${searchQuery}">Результаты поиска для фамилии: <strong th:text="${searchQuery}"></strong> (<a href="/">Показать весь список сотрудников</a>)</p>
+    
+    <!-- Сообщение, если список пустой -->
+    <p th:if="${#lists.isEmpty(employees)}" style="color: red;">
+        Ни одного сотрудника не найдено.
+    </p>
+    
+    <ul th:if="${!#lists.isEmpty(employees)}">
+        <!-- Здесь будут отображаться сотрудники (или результаты поиска) -->
+        <li th:each="employee : ${employees}">
+            <strong>ID:</strong> <span th:text="${employee.id}"></span> |
+            <strong>Фамилия/Имя:</strong> <span th:text="${employee.lastName} + ' ' + ${employee.firstName}"></span> |
+            <strong>Должность:</strong> <span th:text="${employee.position}"></span> |
+            <strong>Зарплата:</strong> <span th:text="${employee.salary}"></span> |
+            <strong>Дата трудоустройства:</strong> <span th:text="${employee.hireDate}"></span>
+            <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" onclick="return confirm('Вы уверены, что хотите удалить запись о сотруднике?');">Удалить</a>
+            <form th:action="@{/updateEmployee/{id}(id=${employee.id})}" method="post" style="display:inline;">
+                <label for="salary">Новая зарплата:</label>
+                <input type="number" step="0.1" id="salary" name="salary" required>
+                <button type="submit">Обновить зарплату</button>
+            </form>
+        </li>
+    </ul>
+    
+    <h2 id="add">Добавление новых пользователей</h2>
+    <form th:action="@{/addEmployee}" method="post">
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <label for="position">Должность:</label>
+        <input type="text" id="position" name="position" required>
+        <label for="salary">Зарплата:</label>
+        <input type="number" step="0.01" id="salary" name="salary" required>
+        <label for="hireDate">Дата трудоустройства:</label>
+        <input type="date" id="hireDate" name="hireDate" required>
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>
