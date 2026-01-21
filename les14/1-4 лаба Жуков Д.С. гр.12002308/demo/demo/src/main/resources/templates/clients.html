@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление абитуриентами</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .auth-info {
+            text-align: right;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            padding: 10px 20px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+        }
+        .auth-info a {
+            color: #3498db;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        .auth-info a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .navigation {
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .navigation a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .navigation a:hover {
+            background-color: #2980b9;
+        }
+        .search-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .form-section, .list-section {
+            margin-bottom: 40px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 25px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+        .clear-search {
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .clear-search:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+        .search-result {
+            margin: 15px 0;
+            padding: 12px 20px;
+            background-color: #e8f4f8;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .no-results {
+            background-color: #fff5f5;
+            border-left: 4px solid #e74c3c;
+            color: #c0392b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .actions a {
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+        .edit-link {
+            background-color: #f39c12;
+            color: white;
+        }
+        .delete-link {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .edit-link:hover {
+            background-color: #d68910;
+        }
+        .delete-link:hover {
+            background-color: #c0392b;
+        }
+        .view-only {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .empty-table {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="auth-info">
+    <span sec:authorize="isAuthenticated()">
+            Вы вошли как: <strong sec:authentication="name"></strong> |
+            <a href="/logout">Выйти</a>
+        </span>
+    </form>
+    <span sec:authorize="!isAuthenticated()">
+            <a href="/login">Войти в систему</a>
+        </span>
+</div>
+
+<div class="container">
+    <div class="navigation">
+        <a href="/home">На главную</a>
+        <a href="/orders">Добавить абитуриента</a>
+        
+    </div>
+
+    <h1>Управление абитуриента</h1>
+
+
+    <!-- Блок поиска -->
+    <div class="search-section">
+        <h2>Поиск клиентов</h2>
+        <form th:action="@{/clients}" method="get">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="searchType">Искать по:</label>
+                    <select id="searchType" name="searchType">
+                        <option value="lastName" th:selected="${searchType == 'lastName'}">Фамилии</option>
+                        <option value="firstName" th:selected="${searchType == 'firstName'}">Имени</option>
+                        <option value="phone" th:selected="${searchType == 'phone'}">Телефону</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchValue">Значение:</label>
+                    <input type="text" id="searchValue" name="searchValue"
+                           th:value="${searchValue}"
+                           placeholder="Введите для поиска...">
+                </div>
+            </div>
+            <button type="submit">Найти</button>
+            <a href="/clients" class="clear-search">Сбросить поиск</a>
+        </form>
+    </div>
+
+    <!-- Результаты поиска -->
+    <div th:if="${searchValue != null && !searchValue.isEmpty()}"
+         th:class="${clients.size() > 0} ? 'search-result' : 'search-result no-results'">
+        <p style="margin: 0;">
+                <span th:if="${clients.size() > 0}">
+                    Найдено абитуриентов: <strong th:text="${clients.size()}"></strong>
+                    по запросу «<span th:text="${searchValue}"></span>»
+                    (поиск по
+                    <span th:text="${searchType == 'lastName' ? 'фамилии' :
+                                   searchType == 'firstName' ? 'имени' : 'телефону'}"></span>)
+                </span>
+            <span th:if="${clients.size() == 0}">
+                    По запросу «<span th:text="${searchValue}"></span>» ничего не найдено
+                </span>
+        </p>
+    </div>
+
+    <!-- Список клиентов -->
+    <div class="list-section">
+        <h2>Список клиентов</h2>
+
+        <div th:if="${clients != null && clients.size() == 0 && (searchValue == null || searchValue.isEmpty())}"
+             class="empty-table">
+            <p>В базе данных пока нет абитуриента.</p>
+            <p sec:authorize="hasRole('ADMIN')">Добавьте первого абитуриента с помощью формы выше.</p>
+        </div>
+
+        <table th:if="${clients != null && clients.size() > 0}">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Email</th>
+                <th>Телефон</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.id}"></td>
+                <td th:text="${client.lastName}"></td>
+                <td th:text="${client.firstName}"></td>
+                <td th:text="${client.patronymic}"></td>
+                <td th:text="${client.email}"></td>
+                <td th:text="${client.phone}"></td>
+                <td class="actions">
+                    <!-- Кнопки редактирования/удаления — только для ADMIN -->
+                    <span sec:authorize="hasRole('ADMIN')">
+                                <a class="edit-link" th:href="@{/clients/edit/{id}(id=${client.id})}">Редактировать</a>
+                                <a class="delete-link" th:href="@{/clients/delete/{id}(id=${client.id})}"
+                                   onclick="return confirm('Вы уверены, что хотите удалить клиента?')">Удалить</a>
+                            </span>
+                    <!-- Для CLIENT показываем только просмотр -->
+                    <span sec:authorize="!hasRole('ADMIN')" class="view-only">
+                                Только просмотр
+                            </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        
+    </div>
+</div>
+</body>
+</html>

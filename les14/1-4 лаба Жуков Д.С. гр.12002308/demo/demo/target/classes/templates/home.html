@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная — Приемная комиссия</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .header {
+            background: linear-gradient(135deg, #21a80f, #3498db);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+        }
+        .header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        .auth-info {
+            text-align: right;
+            padding: 15px 30px;
+            background-color: #ecf0f1;
+            font-size: 1rem;
+        }
+        .auth-info a {
+            color: #3498db;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        .auth-info a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .feature-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .feature-card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .feature-card a:hover {
+            background-color: #27ae60;
+        }
+        .disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .disabled a {
+            background-color: #95a5a6;
+            pointer-events: none;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<div class="auth-info">
+        <span sec:authorize="isAuthenticated()">
+            Вы вошли как: <strong sec:authentication="name"></strong> |
+            <a href="/logout">Выйти</a>
+        </span>
+    <span sec:authorize="!isAuthenticated()">
+            <a href="/login">Войти в систему</a>
+        </span>
+</div>
+
+<div class="header">
+    <h1>Приемная комиссия</h1>
+  
+</div>
+
+<div class="container">
+
+    <div class="features">
+        <div class="feature-card">
+            <h3> Абитуриеинты</h3>
+            <p>Управление данными абитуриентов: добавление, просмотр, редактирование, удаление.</p>
+            <a href="/clients">Перейти к абитуриентам</a>
+        </div>
+
+        <div class="feature-card disabled">
+            <h3> Госуслуги</h3>
+            <p>Интеграция с Госуслугами.</p>
+            <a href="#">Скоро будет</a>
+        </div>
+
+        <div class="feature-card disabled">
+            <h3> Приемная комиссия институт</h3>
+            <p>Новая версия приложения разработанная для нужд ВУЗов.</p>
+            <a href="#">Скоро будет</a>
+        </div>
+
+        
+
+    
+</div>
+</body>
+</html>
