@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Product</title>
+</head>
+<body>
+
+<h1>Create Product</h1>
+
+<form action="/products/create" method="post">
+
+    Name: <input type="text" name="name"/><br/>
+    Description: <input type="text" name="description"/><br/>
+    Stock: <input type="number" name="stockQuantity"/><br/>
+
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

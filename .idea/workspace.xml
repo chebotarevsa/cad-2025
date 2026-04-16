@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="71304bf7-1644-4208-a938-a48870823b09" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/les14/lab/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/les14/lab/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/les14/lab/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/les14/lab/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/les14/lab/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/les14/lab/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/les14/lab/.idea/modules/app/lab.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/les14/lab/.idea/modules/app/lab.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/les14/lab/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/les14/lab/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/les14/lab/app/src/main/java/ru/bsuedu/cad/lab/web/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/les14/lab/app/src/main/java/ru/bsuedu/cad/lab/web/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/les14/lab/app/src/test/java/ru/bsuedu/cad/lab/AppTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="OybXFujy" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3CNlyUIL4eMD2b6L6GwC2UbFju8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "lab1",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/bizzare_owl/IdeaProjects/cad-2025",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.first.attach.projects": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bizzare_owl\IdeaProjects\cad-2025\les10" />
+      <recent name="C:\Users\bizzare_owl\IdeaProjects\cad-2025\les08\lab\app\src\main\resources" />
+      <recent name="C:\Users\bizzare_owl\IdeaProjects\cad-2025\les08" />
+      <recent name="C:\Users\bizzare_owl\IdeaProjects\cad-2025\les06\lab\app\src\main\resources" />
+      <recent name="C:\Users\bizzare_owl\IdeaProjects\cad-2025\les06" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bizzare_owl\IdeaProjects\cad-2025\les02\lab\app\src\main\java\ru\bsuedu\cad\lab" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="cad-2025" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="cad-2025" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71304bf7-1644-4208-a938-a48870823b09" name="Changes" comment="" />
+      <created>1776234162889</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776234162889</updated>
+      <workItem from="1776234164258" duration="8648000" />
+      <workItem from="1776243738924" duration="112000" />
+      <workItem from="1776243871846" duration="833000" />
+      <workItem from="1776244726934" duration="24000" />
+      <workItem from="1776244870569" duration="335000" />
+      <workItem from="1776245229570" duration="5959000" />
+      <workItem from="1776251384768" duration="9661000" />
+      <workItem from="1776339298538" duration="39000" />
+      <workItem from="1776368330950" duration="1748000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
