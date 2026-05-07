@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование заказа</title>
+</head>
+<body>
+    <h1>Редактирование заказа #<span th:text="${order.id}"></span></h1>
+    
+    <form th:action="@{/orders/edit/{id}(id=${order.id})}" method="post">
+        <label>Клиент:</label>
+        <select name="customerId">
+            <option th:each="customer : ${customers}" th:value="${customer.id}" 
+                    th:text="${customer.fullName}" th:selected="${customer.id == order.customer.id}"></option>
+        </select>
+        <br><br>
+        
+        <label>Статус:</label>
+        <select name="status">
+            <option value="NEW" th:selected="${order.status == 'NEW'}">NEW</option>
+            <option value="PROCESSING" th:selected="${order.status == 'PROCESSING'}">PROCESSING</option>
+            <option value="COMPLETED" th:selected="${order.status == 'COMPLETED'}">COMPLETED</option>
+            <option value="CANCELLED" th:selected="${order.status == 'CANCELLED'}">CANCELLED</option>
+        </select>
+        <br><br>
+        
+        <h3>Товары в заказе:</h3>
+        <ul>
+            <li th:each="item : ${order.items}">
+                <span th:text="${item.product.name}"></span> - 
+                <span th:text="${item.quantity}"></span> шт. x 
+                <span th:text="${item.price}"></span> руб.
+            </li>
+        </ul>
+        
+        <input type="submit" value="Сохранить изменения">
+    </form>
+    <br>
+    <a href="/orders">Назад к списку заказов</a>
+</body>
+</html>

@@ -16,23 +16,27 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-    testImplementation(libs.junit.jupiter)
+    // Старые зависимости
+    implementation("org.springframework:spring-context:5.3.30")
+    implementation("org.springframework:spring-aop:5.3.30")
+    implementation("org.aspectj:aspectjweaver:1.9.19")
+    implementation("javax.annotation:javax.annotation-api:1.3.2")
+    
+    // JPA
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    
+    // HikariCP (пул соединений)
+    implementation("com.zaxxer:HikariCP:5.0.1")
 
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-    // This dependency is used by the application.
-    implementation(libs.guava)
-    implementation(libs.spring.context)
-    implementation(libs.spring.orm)
-    implementation(libs.hikari)
-    implementation(libs.jakarta.persistence.api)
-    implementation(libs.hibernate.hikaricp)
-    implementation(libs.hibernate.core)
-    implementation(libs.slf4j.api)
-    implementation(libs.logback.core)
-    implementation(libs.logback.classic)
-    runtimeOnly(libs.h2)
+    // Новые для БД и логирования
+    implementation("org.springframework:spring-jdbc:5.3.30")
+    implementation("com.h2database:h2:2.2.224")
+    implementation("ch.qos.logback:logback-classic:1.4.14")
+     // ... остальные зависимости ...
+    
+    // Hibernate и Spring ORM (если нужны)
+    implementation("org.hibernate.orm:hibernate-core:6.3.1.Final")
+    implementation("org.springframework:spring-orm:5.3.30")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
