@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Изменить заказ</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Изменить заказ</h1>
+    <form method="post" th:action="@{/orders/edit/{id}(id=${order.orderId})}">
+        <div>
+            <label>Покупатель:</label>
+            <select name="customerId">
+                <option th:each="customer : ${customers}" th:value="${customer.customerId}" th:text="${customer.name}" th:selected="${customer.customerId == order.customer.customerId}">Иван</option>
+            </select>
+        </div>
+        <div>
+            <label>Товары:</label>
+            <div th:each="product : ${products}">
+                <input type="checkbox" name="productIds" th:value="${product.productId}" th:checked="${#lists.contains(order.orderDetails.![product.productId], product.productId)}">
+                <span th:text="${product.name}">Корм</span>
+                <span th:text="${product.price}">100</span>
+            </div>
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+    <a th:href="@{/orders}">Назад к заказам</a>
+</body>
+</html>
