@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы зоомагазина</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 5px; }
+        form { display: inline; }
+    </style>
+</head>
+<body>
+<h1>Заказы зоомагазина</h1>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Выйти</button>
+</form>
+
+<a th:if="${canManage}" th:href="@{/orders/new}">Создать заказ</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Покупатель</th>
+        <th>Дата</th>
+        <th>Адрес</th>
+        <th>Статус</th>
+        <th>Сумма</th>
+        <th>Товары</th>
+        <th th:if="${canManage}">Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.customer.name}"></td>
+        <td th:text="${order.orderDate}"></td>
+        <td th:text="${order.shippingAddress}"></td>
+        <td th:text="${order.status}"></td>
+        <td th:text="${order.totalPrice}"></td>
+        <td>
+            <div th:each="detail : ${order.details}">
+                <span th:text="${detail.product.name}"></span>,
+                <span th:text="${detail.quantity}"></span> шт.
+            </div>
+        </td>
+        <td th:if="${canManage}">
+            <a th:href="@{/orders/{id}/edit(id=${order.id})}">Изменить</a>
+            <form th:action="@{/orders/{id}/delete(id=${order.id})}" method="post">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

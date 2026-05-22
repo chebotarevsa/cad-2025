@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма заказа</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        label { display: block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<h1 th:text="${order == null ? 'Новый заказ' : 'Изменение заказа'}"></h1>
+
+<form th:action="${order == null} ? @{/orders} : @{/orders/{id}(id=${order.id})}" th:object="${orderForm}" method="post">
+    <label>
+        Покупатель
+        <select th:field="*{customerId}" required>
+            <option value="">Выберите покупателя</option>
+            <option th:each="customer : ${customers}"
+                    th:value="${customer.id}"
+                    th:text="${customer.name}">
+            </option>
+        </select>
+    </label>
+
+    <label>
+        Товар
+        <select th:field="*{productId}" required>
+            <option value="">Выберите товар</option>
+            <option th:each="product : ${products}"
+                    th:value="${product.id}"
+                    th:text="${product.name + ' - ' + product.price}">
+            </option>
+        </select>
+    </label>
+
+    <label>
+        Количество
+        <input type="number" th:field="*{quantity}" min="1" required>
+    </label>
+
+    <label>
+        Адрес доставки
+        <input type="text" th:field="*{shippingAddress}" required>
+    </label>
+
+    <label th:if="${order != null}">
+        Статус
+        <select th:field="*{status}">
+            <option value="NEW">NEW</option>
+            <option value="PAID">PAID</option>
+            <option value="DELIVERED">DELIVERED</option>
+            <option value="CANCELED">CANCELED</option>
+        </select>
+    </label>
+
+    <button type="submit">Сохранить</button>
+    <a th:href="@{/orders}">Назад</a>
+</form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; }
+        .login { width: 320px; margin: 80px auto; padding: 20px; background: white; border: 1px solid #ccc; }
+        label { display: block; margin-top: 10px; }
+        input { width: 100%; padding: 6px; box-sizing: border-box; }
+        button { margin-top: 14px; padding: 7px 14px; }
+        .error { color: red; }
+        .ok { color: green; }
+    </style>
+</head>
+<body>
+<div class="login">
+    <h1>Магазин зоотоваров</h1>
+    <h2>Вход</h2>
+
+    <form th:action="@{/login}" method="post">
+        <label for="username">Логин</label>
+        <input id="username" name="username" type="text" required>
+
+        <label for="password">Пароль</label>
+        <input id="password" name="password" type="password" required>
+
+        <button type="submit">Войти</button>
+    </form>
+
+    <p class="error" th:if="${param.error}">Неверный логин или пароль</p>
+    <p>user/user - только просмотр</p>
+    <p>manager/manager - все операции</p>
+</div>
+</body>
+</html>

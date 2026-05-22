@@ -1,0 +1,9 @@
+.gradle/
+build/
+app/build/
+app/data/
+*.class
+*.db
+*.lock
+apache-tomcat-*/
+apache-tomcat-*.tar.gz
