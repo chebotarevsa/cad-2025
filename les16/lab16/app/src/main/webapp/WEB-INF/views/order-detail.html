@@ -1,0 +1,268 @@
+<!doctype html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Детали заказа</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Courier New", "Rajdhani", monospace;
+        margin: 0;
+        padding: 20px;
+        background: #0a0a0f;
+        min-height: 100vh;
+        color: #c8d0e0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #0d0d12;
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid #00c8ff;
+        box-shadow: 0 0 15px rgba(0, 200, 255, 0.1);
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #2a2a3a;
+      }
+
+      h1 {
+        color: #00c8ff;
+        font-size: 22px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 0 0 8px #00c8ff;
+        margin: 0;
+      }
+
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 12px;
+      }
+
+      .user-name {
+        color: #00ff80;
+        text-shadow: 0 0 4px #00ff80;
+      }
+
+      .btn-logout {
+        background: #2a1a2a;
+        color: #ff3060;
+        border: 1px solid #ff3060;
+        padding: 6px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family: monospace;
+      }
+
+      .btn-logout:hover {
+        background: #ff3060;
+        color: white;
+      }
+
+      h3 {
+        color: #8000ff;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 20px 0 15px;
+        text-shadow: 0 0 5px #8000ff;
+      }
+
+      .info-box {
+        background: #0f0f17;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        border: 1px solid #2a2a3a;
+      }
+
+      .info-row {
+        margin-bottom: 10px;
+        padding: 6px 0;
+        border-bottom: 1px solid #1a1a2a;
+        display: flex;
+      }
+
+      .info-row:last-child {
+        border-bottom: none;
+      }
+
+      .info-label {
+        font-weight: bold;
+        display: inline-block;
+        width: 150px;
+        color: #8000ff;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        flex-shrink: 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid #2a2a3a;
+        padding: 10px 12px;
+        text-align: left;
+      }
+
+      th {
+        background: #1a1a2a;
+        color: #00c8ff;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      tr:nth-child(even) td {
+        background-color: #0f0f17;
+      }
+
+      .total-row td {
+        background: #1a1a2a;
+      }
+
+      .total-row strong {
+        color: #00ff80;
+      }
+
+      .btn {
+        background: #8000ff;
+        color: white;
+        padding: 8px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: #00c8ff;
+        color: #0a0a0f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Детали заказа № <span th:text="${order.id}">1</span></h1>
+        <div class="user-info">
+          <span
+            >ПОЛЬЗОВАТЕЛЬ:
+            <span class="user-name" sec:authentication="name">user</span></span
+          >
+          <form th:action="@{/logout}" method="post" style="display: inline">
+            <button type="submit" class="btn-logout">[ ВЫЙТИ ]</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-row">
+          <span class="info-label">Клиент:</span>
+          <span
+            th:text="${order.customer != null ? order.customer.name : 'Не указан'}"
+            >Иван Петров</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email:</span>
+          <span
+            th:text="${order.customer != null ? order.customer.email : 'Не указан'}"
+            >ivan@mail.ru</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="info-label">Телефон:</span>
+          <span
+            th:text="${order.customer != null ? order.customer.phone : 'Не указан'}"
+            >+7 (999) 123-45-67</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="info-label">Дата заказа:</span>
+          <span
+            th:text="${#temporals.format(order.orderDate, 'dd.MM.yyyy HH:mm')}"
+            >16.03.2026 12:00</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="info-label">Статус:</span>
+          <span
+            th:text="${order.status}"
+            style="color: #ffaa00; text-shadow: 0 0 4px #ffaa00"
+            >NEW</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="info-label">Адрес доставки:</span>
+          <span th:text="${order.shippingAddress}">ул. Ленина, 1</span>
+        </div>
+      </div>
+
+      <h3>Состав заказа</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Товар</th>
+            <th>Категория</th>
+            <th>Количество</th>
+            <th>Цена</th>
+            <th>Сумма</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="detail : ${order.orderDetails}">
+            <td th:text="${detail.product.name}">Сухой корм</td>
+            <td th:text="${detail.product.category.name}">Корма</td>
+            <td th:text="${detail.quantity}">2</td>
+            <td th:text="${detail.price} + ' руб.'">500 руб.</td>
+            <td th:text="${detail.subtotal} + ' руб.'">1000 руб.</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="4" style="text-align: right">
+              <strong>ИТОГО:</strong>
+            </td>
+            <td>
+              <strong th:text="${order.totalPrice} + ' руб.'">1000 руб.</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <a th:href="@{/orders}" class="btn">← К СПИСКУ ЗАКАЗОВ</a>
+    </div>
+  </body>
+</html>

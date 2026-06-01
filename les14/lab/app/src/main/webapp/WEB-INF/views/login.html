@@ -1,0 +1,237 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Вход в систему</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Courier New", "Rajdhani", monospace;
+        margin: 0;
+        padding: 20px;
+        background: #0a0a0f;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #c8d0e0;
+      }
+
+      .login-container {
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+        background: #0d0d12;
+        padding: 30px;
+        border-radius: 8px;
+        border: 1px solid #00c8ff;
+        box-shadow: 0 0 25px rgba(0, 200, 255, 0.15);
+      }
+
+      h1 {
+        color: #00c8ff;
+        font-size: 26px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px #00c8ff;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #8000ff;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        background: #0f0f17;
+        border: 1px solid #2a2a3a;
+        border-radius: 4px;
+        color: #c8d0e0;
+        font-size: 14px;
+        font-family: "Courier New", monospace;
+        outline: none;
+        transition: all 0.3s;
+        box-sizing: border-box;
+      }
+
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        border-color: #00c8ff;
+        box-shadow: 0 0 12px rgba(0, 200, 255, 0.3);
+      }
+
+      .btn {
+        width: 100%;
+        background: #8000ff;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        transition: all 0.3s;
+        margin-top: 10px;
+      }
+
+      .btn:hover {
+        background: #00c8ff;
+        color: #0a0a0f;
+        box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+      }
+
+      .error-message {
+        background: #2a0a0a;
+        color: #ff3060;
+        padding: 12px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        text-align: center;
+        border-left: 3px solid #ff3060;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .success-message {
+        background: #0a2a0a;
+        color: #00ff80;
+        padding: 12px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        text-align: center;
+        border-left: 3px solid #00ff80;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .login-footer {
+        margin-top: 25px;
+        text-align: center;
+        color: #4a4a5a;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .logo-icon {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .logo-icon svg {
+        width: 60px;
+        height: 60px;
+        filter: drop-shadow(0 0 5px #00c8ff);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo-icon">
+        <svg
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            stroke="#00c8ff"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M30 40 L50 25 L70 40 L70 60 L50 75 L30 60 Z"
+            stroke="#8000ff"
+            stroke-width="2"
+            fill="none"
+          />
+          <circle cx="50" cy="50" r="8" fill="#00c8ff" opacity="0.8" />
+          <line
+            x1="50"
+            y1="25"
+            x2="50"
+            y2="75"
+            stroke="#00c8ff"
+            stroke-width="1"
+            opacity="0.5"
+          />
+          <line
+            x1="30"
+            y1="50"
+            x2="70"
+            y2="50"
+            stroke="#00c8ff"
+            stroke-width="1"
+            opacity="0.5"
+          />
+        </svg>
+      </div>
+
+      <h1>DEVICESTORE</h1>
+
+      <div th:if="${error}" class="error-message" th:text="${error}">
+        [ERROR] НЕВЕРНЫЙ ЛОГИН ИЛИ ПАРОЛЬ
+      </div>
+
+      <div th:if="${message}" class="success-message" th:text="${message}">
+        [OK] ВЫХОД ВЫПОЛНЕН
+      </div>
+
+      <form th:action="@{/login}" method="post">
+        <div class="form-group">
+          <label for="username">ЛОГИН:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="> ВВЕДИТЕ ЛОГИН"
+            required
+            autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">ПАРОЛЬ:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="> ВВЕДИТЕ ПАРОЛЬ"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn">[ ВОЙТИ ]</button>
+      </form>
+
+      <div class="login-footer">
+        <span>SECURE TERMINAL v2.0 | DEVICESTORE SYSTEM</span>
+      </div>
+    </div>
+  </body>
+</html>

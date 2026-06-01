@@ -1,0 +1,295 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Новый заказ</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Courier New", "Rajdhani", monospace;
+        margin: 0;
+        padding: 20px;
+        background: #0a0a0f;
+        min-height: 100vh;
+        color: #c8d0e0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #0d0d12;
+        padding: 25px;
+        border-radius: 8px;
+        border: 1px solid #00c8ff;
+        box-shadow: 0 0 15px rgba(0, 200, 255, 0.1);
+      }
+
+      h1 {
+        color: #00c8ff;
+        font-size: 22px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 0 0 8px #00c8ff;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        color: #8000ff;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 20px 0 15px;
+        text-shadow: 0 0 5px #8000ff;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #8000ff;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      select,
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        background: #0f0f17;
+        border: 1px solid #2a2a3a;
+        border-radius: 4px;
+        color: #c8d0e0;
+        font-size: 14px;
+        outline: none;
+      }
+
+      select:focus,
+      input:focus {
+        border-color: #00c8ff;
+        box-shadow: 0 0 8px rgba(0, 200, 255, 0.3);
+      }
+
+      select option {
+        background: #0f0f17;
+      }
+
+      .product-row {
+        background: #0f0f17;
+        padding: 15px;
+        margin-bottom: 12px;
+        border: 1px solid #2a2a3a;
+        border-radius: 4px;
+      }
+
+      .product-row select,
+      .product-row input {
+        margin-bottom: 10px;
+      }
+
+      .btn {
+        background: #8000ff;
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn:hover {
+        background: #00c8ff;
+        color: #0a0a0f;
+      }
+
+      .btn-cancel {
+        background: #3a2a4a;
+      }
+
+      .btn-cancel:hover {
+        background: #ff3060;
+        color: white;
+      }
+
+      .add-btn {
+        background: #1a1a2a;
+        color: #00c8ff;
+        padding: 8px 20px;
+        border: 1px solid #00c8ff;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 10px 0;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .add-btn:hover {
+        background: #00c8ff;
+        color: #0a0a0f;
+      }
+
+      .remove-btn {
+        background: #2a1a2a;
+        color: #ff3060;
+        border: 1px solid #ff3060;
+        padding: 5px 12px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 11px;
+        margin-top: 10px;
+      }
+
+      .remove-btn:hover {
+        background: #ff3060;
+        color: white;
+      }
+
+      .actions-row {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Создание заказа</h1>
+
+      <form action="/zoostore/orders" method="post">
+        <div class="form-group">
+          <label for="customerId">Клиент</label>
+          <select id="customerId" name="customerId" required>
+            <option value="">-- Выберите клиента --</option>
+            <option
+              th:each="customer : ${customers}"
+              th:value="${customer.id}"
+              th:text="${customer.name} + ' (' + ${customer.email} + ')'"
+            ></option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="shippingAddress">Адрес доставки</label>
+          <input
+            type="text"
+            id="shippingAddress"
+            name="shippingAddress"
+            placeholder="Введите адрес доставки"
+            required
+          />
+        </div>
+
+        <h3>Товары в заказе</h3>
+
+        <div id="items-container">
+          <div class="product-row">
+            <select name="items[0].productId" required>
+              <option value="">-- Выберите товар --</option>
+              <option
+                th:each="product : ${products}"
+                th:value="${product.id}"
+                th:text="${product.name} + ' (' + ${product.price} + ' руб.)'"
+              ></option>
+            </select>
+            <input
+              type="number"
+              name="items[0].quantity"
+              placeholder="Количество"
+              min="1"
+              required
+            />
+            <button type="button" class="remove-btn" onclick="removeItem(this)">
+              Удалить
+            </button>
+          </div>
+        </div>
+
+        <button type="button" class="add-btn" onclick="addItem()">
+          + Добавить товар
+        </button>
+
+        <div class="actions-row">
+          <button type="submit" class="btn">Создать</button>
+          <a href="/zoostore/orders" class="btn btn-cancel">Отмена</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      let itemCount = 1;
+
+      function addItem() {
+        const container = document.getElementById("items-container");
+        const newRow = document.createElement("div");
+        newRow.className = "product-row";
+
+        const select = document.createElement("select");
+        select.name = "items[" + itemCount + "].productId";
+        select.required = true;
+
+        const emptyOption = document.createElement("option");
+        emptyOption.value = "";
+        emptyOption.textContent = "-- Выберите товар --";
+        select.appendChild(emptyOption);
+
+        const firstSelect = document.querySelector(
+          'select[name="items[0].productId"]',
+        );
+        if (firstSelect) {
+          for (let i = 1; i < firstSelect.options.length; i++) {
+            const option = document.createElement("option");
+            option.value = firstSelect.options[i].value;
+            option.textContent = firstSelect.options[i].textContent;
+            select.appendChild(option);
+          }
+        }
+
+        const input = document.createElement("input");
+        input.type = "number";
+        input.name = "items[" + itemCount + "].quantity";
+        input.placeholder = "Количество";
+        input.min = "1";
+        input.required = true;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "remove-btn";
+        removeBtn.textContent = "Удалить";
+        removeBtn.onclick = function () {
+          removeItem(this);
+        };
+        ё;
+        newRow.appendChild(select);
+        newRow.appendChild(input);
+        newRow.appendChild(removeBtn);
+        container.appendChild(newRow);
+        itemCount++;
+      }
+
+      function removeItem(button) {
+        const row = button.parentElement;
+        const container = document.getElementById("items-container");
+        if (container.children.length > 1) {
+          row.remove();
+        } else {
+          alert("Должен быть хотя бы один товар");
+        }
+      }
+    </script>
+  </body>
+</html>
