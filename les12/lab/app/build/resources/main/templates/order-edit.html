@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Зоомагазин — Редактировать заказ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+
+<h1 class="mb-1">Редактировать заказ <span th:text="'#' + ${order.orderId}"></span></h1>
+<p class="text-muted mb-3">
+    Клиент: <strong th:text="${order.customer.name}"></strong> |
+    Дата: <span th:text="${order.orderDate != null ? order.orderDate.toLocalDate() : '—'}"></span> |
+    Сумма: <span th:text="${#numbers.formatDecimal(order.totalPrice, 1, 2)} + ' руб.'"></span>
+</p>
+
+<form th:action="@{/orders/{id}/edit(id=${order.orderId})}" th:object="${editForm}"
+      method="post" style="max-width:500px">
+
+    <div class="mb-3">
+        <label for="status" class="form-label">Статус</label>
+        <select id="status" th:field="*{status}" class="form-select">
+            <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}">Статус</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="shippingAddress" class="form-label">Адрес доставки</label>
+        <input type="text" id="shippingAddress" th:field="*{shippingAddress}"
+               class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-warning">Сохранить</button>
+    <a href="/orders" class="btn btn-secondary ms-2">Отмена</a>
+</form>
+
+</body>
+</html>

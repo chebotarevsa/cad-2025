@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>ru.bsuedu.cad.lab.AppConfiguration</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>orderList</servlet-name>
+        <servlet-class>ru.bsuedu.cad.lab.servlet.OrderListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orderList</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>orderCreate</servlet-name>
+        <servlet-class>ru.bsuedu.cad.lab.servlet.OrderCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orderCreate</servlet-name>
+        <url-pattern>/create-order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>productRest</servlet-name>
+        <servlet-class>ru.bsuedu.cad.lab.servlet.ProductRestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>productRest</servlet-name>
+        <url-pattern>/api/products</url-pattern>
+    </servlet-mapping>
+
+</web-app>

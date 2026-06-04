@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.service</a> &gt; <span class="el_source">OrderService.java</span></div><h1>OrderService.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ru.bsuedu.cad.lab.entity.*;
+import ru.bsuedu.cad.lab.repository.OrderRepository;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class OrderService {
+
+<span class="fc" id="L19">    private static final Logger LOGGER = LoggerFactory.getLogger(OrderService.class);</span>
+
+    private final OrderRepository orderRepository;
+
+<span class="fc" id="L23">    public OrderService(OrderRepository orderRepository) {</span>
+<span class="fc" id="L24">        this.orderRepository = orderRepository;</span>
+<span class="fc" id="L25">    }</span>
+
+    @Transactional
+    public Order createOrder(Customer customer, List&lt;Product&gt; products, String shippingAddress) {
+<span class="fc" id="L29">        Order order = new Order();</span>
+<span class="fc" id="L30">        order.setCustomer(customer);</span>
+<span class="fc" id="L31">        order.setOrderDate(LocalDateTime.now());</span>
+<span class="fc" id="L32">        order.setStatus(&quot;NEW&quot;);</span>
+<span class="fc" id="L33">        order.setShippingAddress(shippingAddress);</span>
+
+<span class="fc" id="L35">        BigDecimal total = BigDecimal.ZERO;</span>
+<span class="fc" id="L36">        List&lt;OrderDetail&gt; details = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for (Product p : products) {</span>
+<span class="fc" id="L38">            OrderDetail detail = new OrderDetail();</span>
+<span class="fc" id="L39">            detail.setOrder(order);</span>
+<span class="fc" id="L40">            detail.setProduct(p);</span>
+<span class="fc" id="L41">            detail.setQuantity(1);</span>
+<span class="fc" id="L42">            detail.setPrice(p.getPrice());</span>
+<span class="fc" id="L43">            details.add(detail);</span>
+<span class="fc" id="L44">            total = total.add(p.getPrice());</span>
+<span class="fc" id="L45">        }</span>
+<span class="fc" id="L46">        order.setTotalPrice(total);</span>
+<span class="fc" id="L47">        order.setOrderDetails(details);</span>
+
+<span class="fc" id="L49">        Order saved = orderRepository.save(order);</span>
+<span class="fc" id="L50">        LOGGER.info(&quot;Создан заказ #{} для клиента '{}', сумма: {} руб., товаров: {}&quot;,</span>
+<span class="fc" id="L51">            saved.getOrderId(), customer.getName(), saved.getTotalPrice(), products.size());</span>
+<span class="fc" id="L52">        return saved;</span>
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;Order&gt; getAllOrders() {
+<span class="fc" id="L57">        return orderRepository.findAll();</span>
+    }
+
+    @Transactional(readOnly = true)
+    public Optional&lt;Order&gt; findById(Integer id) {
+<span class="fc" id="L62">        return orderRepository.findById(id);</span>
+    }
+
+    @Transactional
+    public Order updateOrder(Integer id, String status, String shippingAddress) {
+<span class="fc" id="L67">        Order order = orderRepository.findById(id)</span>
+<span class="fc" id="L68">                .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Заказ не найден: &quot; + id));</span>
+<span class="fc" id="L69">        order.setStatus(status);</span>
+<span class="fc" id="L70">        order.setShippingAddress(shippingAddress);</span>
+<span class="fc" id="L71">        Order saved = orderRepository.save(order);</span>
+<span class="fc" id="L72">        LOGGER.info(&quot;Обновлён заказ #{}: статус={}, адрес={}&quot;, id, status, shippingAddress);</span>
+<span class="fc" id="L73">        return saved;</span>
+    }
+
+    @Transactional
+    public void deleteOrder(Integer id) {
+<span class="fc" id="L78">        orderRepository.deleteById(id);</span>
+<span class="fc" id="L79">        LOGGER.info(&quot;Удалён заказ #{}&quot;, id);</span>
+<span class="fc" id="L80">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.bsuedu.cad.lab.service.OrderServiceIntegrationTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-06-04T14:02:11" hostname="DESKTOP-G40L377" time="0.765">
+  <properties/>
+  <testcase name="deleteOrder_shouldRemoveOrderFromDatabase()" classname="ru.bsuedu.cad.lab.service.OrderServiceIntegrationTest" time="0.56"/>
+  <testcase name="getAllOrders_shouldReturnCreatedOrders()" classname="ru.bsuedu.cad.lab.service.OrderServiceIntegrationTest" time="0.142"/>
+  <testcase name="updateOrder_shouldPersistChangesInDatabase()" classname="ru.bsuedu.cad.lab.service.OrderServiceIntegrationTest" time="0.02"/>
+  <testcase name="createOrder_withMultipleProducts_shouldCalculateTotalCorrectly()" classname="ru.bsuedu.cad.lab.service.OrderServiceIntegrationTest" time="0.018"/>
+  <testcase name="updateOrder_withNonExistentId_shouldThrowException()" classname="ru.bsuedu.cad.lab.service.OrderServiceIntegrationTest" time="0.01"/>
+  <testcase name="createOrder_shouldPersistOrderInDatabase()" classname="ru.bsuedu.cad.lab.service.OrderServiceIntegrationTest" time="0.01"/>
+  <system-out><![CDATA[17:02:09 [WARN ] org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17:02:11 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #1 для клиента 'Тест Тестов', сумма: 0 руб., товаров: 0
+17:02:11 [INFO ] r.b.cad.lab.service.OrderService - Удалён заказ #1
+17:02:11 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #2 для клиента 'Тест Тестов', сумма: 1000.00 руб., товаров: 1
+17:02:11 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #3 для клиента 'Тест Тестов', сумма: 0 руб., товаров: 0
+17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #4 для клиента 'Тест Тестов', сумма: 1000.00 руб., товаров: 1
+17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Обновлён заказ #4: статус=SHIPPED, адрес=Новый адрес
+17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #5 для клиента 'Тест Тестов', сумма: 1500.00 руб., товаров: 2
+17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #6 для клиента 'Тест Тестов', сумма: 1000.00 руб., товаров: 1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

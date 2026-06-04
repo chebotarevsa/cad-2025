@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.bsuedu.cad.lab.service.OrderServiceTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-06-04T14:02:12" hostname="DESKTOP-G40L377" time="0.519">
+  <properties/>
+  <testcase name="getAllOrders_shouldDelegateToRepository()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.477"/>
+  <testcase name="updateOrder_whenOrderNotFound_shouldThrowIllegalArgumentException()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.007"/>
+  <testcase name="createOrder_withEmptyProducts_shouldSetZeroTotal()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.006"/>
+  <testcase name="findById_whenOrderExists_shouldReturnOrder()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.003"/>
+  <testcase name="findById_whenOrderNotExists_shouldReturnEmpty()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.002"/>
+  <testcase name="deleteOrder_shouldCallRepositoryDeleteById()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.006"/>
+  <testcase name="updateOrder_whenOrderExists_shouldUpdateStatusAndAddress()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.003"/>
+  <testcase name="createOrder_withProducts_shouldCalculateTotalAndSave()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.004"/>
+  <testcase name="getAllOrders_whenEmpty_shouldReturnEmptyList()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.002"/>
+  <testcase name="createOrder_shouldSetStatusNew()" classname="ru.bsuedu.cad.lab.service.OrderServiceTest" time="0.003"/>
+  <system-out><![CDATA[17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #null для клиента 'Иван Иванов', сумма: 0 руб., товаров: 0
+17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Удалён заказ #1
+17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Обновлён заказ #1: статус=SHIPPED, адрес=Новый адрес
+17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #null для клиента 'Иван Иванов', сумма: 1800.00 руб., товаров: 2
+17:02:12 [INFO ] r.b.cad.lab.service.OrderService - Создан заказ #null для клиента 'Иван Иванов', сумма: 1500.00 руб., товаров: 1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
