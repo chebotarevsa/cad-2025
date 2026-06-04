@@ -1,0 +1,69 @@
+{
+  "info": {
+    "name": "Pet Shop Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/pet-shop"
+    }
+  ],
+  "item": [
+    {
+      "name": "List orders",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/orders"
+      }
+    },
+    {
+      "name": "Get order by id",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/orders/1"
+      }
+    },
+    {
+      "name": "Create order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"shippingAddress\": \"Москва, ул. Ленина, д. 10\",\n  \"lines\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ]\n}"
+        },
+        "url": "{{baseUrl}}/api/orders"
+      }
+    },
+    {
+      "name": "Update order",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"PAID\",\n  \"shippingAddress\": \"Москва, ул. Пушкина, д. 1\"\n}"
+        },
+        "url": "{{baseUrl}}/api/orders/1"
+      }
+    },
+    {
+      "name": "Delete order",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/orders/1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "Pet Shop Orders API (Basic Auth)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/pet-shop"
+    }
+  ],
+  "item": [
+    {
+      "name": "List orders (user)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            { "key": "username", "value": "user", "type": "string" },
+            { "key": "password", "value": "user", "type": "string" }
+          ]
+        },
+        "method": "GET",
+        "url": "{{baseUrl}}/api/orders"
+      }
+    },
+    {
+      "name": "Get order by id (user)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            { "key": "username", "value": "user", "type": "string" },
+            { "key": "password", "value": "user", "type": "string" }
+          ]
+        },
+        "method": "GET",
+        "url": "{{baseUrl}}/api/orders/1"
+      }
+    },
+    {
+      "name": "Create order (manager)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            { "key": "username", "value": "manager", "type": "string" },
+            { "key": "password", "value": "manager", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"shippingAddress\": \"Москва, ул. Ленина, д. 10\",\n  \"lines\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ]\n}"
+        },
+        "url": "{{baseUrl}}/api/orders"
+      }
+    },
+    {
+      "name": "Update order (manager)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            { "key": "username", "value": "manager", "type": "string" },
+            { "key": "password", "value": "manager", "type": "string" }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"PAID\",\n  \"shippingAddress\": \"Москва, ул. Пушкина, д. 1\"\n}"
+        },
+        "url": "{{baseUrl}}/api/orders/1"
+      }
+    },
+    {
+      "name": "Delete order (manager)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            { "key": "username", "value": "manager", "type": "string" },
+            { "key": "password", "value": "manager", "type": "string" }
+          ]
+        },
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/orders/1"
+      }
+    },
+    {
+      "name": "Create order (user, forbidden)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            { "key": "username", "value": "user", "type": "string" },
+            { "key": "password", "value": "user", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"shippingAddress\": \"Москва\",\n  \"lines\": [{\"productId\": 1, \"quantity\": 1}]\n}"
+        },
+        "url": "{{baseUrl}}/api/orders"
+      }
+    }
+  ]
+}
