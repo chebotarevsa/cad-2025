@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.config</a> &gt; <span class="el_source">AppConfig.java</span></div><h1>AppConfig.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.config;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
+import java.util.Properties;
+
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = &quot;ru.bsuedu.cad.lab.repository&quot;)
+@ComponentScan(basePackages = &quot;ru.bsuedu.cad.lab&quot;)
+<span class="nc" id="L22">public class AppConfig {</span>
+
+    @Bean
+    public DataSource dataSource() {
+<span class="nc" id="L26">        HikariConfig cfg = new HikariConfig();</span>
+<span class="nc" id="L27">        cfg.setDriverClassName(&quot;org.h2.Driver&quot;);</span>
+<span class="nc" id="L28">        cfg.setJdbcUrl(&quot;jdbc:h2:mem:lab;DB_CLOSE_DELAY=-1;MODE=LEGACY&quot;);</span>
+<span class="nc" id="L29">        cfg.setUsername(&quot;sa&quot;);</span>
+<span class="nc" id="L30">        cfg.setPassword(&quot;&quot;);</span>
+<span class="nc" id="L31">        cfg.setMaximumPoolSize(5);</span>
+<span class="nc" id="L32">        return new HikariDataSource(cfg);</span>
+    }
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds) {
+<span class="nc" id="L37">        var emf = new LocalContainerEntityManagerFactoryBean();</span>
+<span class="nc" id="L38">        emf.setDataSource(ds);</span>
+<span class="nc" id="L39">        emf.setPackagesToScan(&quot;ru.bsuedu.cad.lab.entity&quot;);</span>
+<span class="nc" id="L40">        var adapter = new HibernateJpaVendorAdapter();</span>
+<span class="nc" id="L41">        adapter.setGenerateDdl(true);</span>
+<span class="nc" id="L42">        emf.setJpaVendorAdapter(adapter);</span>
+
+<span class="nc" id="L44">        Properties props = new Properties();</span>
+<span class="nc" id="L45">        props.put(&quot;hibernate.hbm2ddl.auto&quot;, &quot;update&quot;);</span>
+<span class="nc" id="L46">        props.put(&quot;hibernate.dialect&quot;, &quot;org.hibernate.dialect.H2Dialect&quot;);</span>
+<span class="nc" id="L47">        props.put(&quot;hibernate.show_sql&quot;, &quot;true&quot;);</span>
+<span class="nc" id="L48">        emf.setJpaProperties(props);</span>
+<span class="nc" id="L49">        return emf;</span>
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean emf) {
+<span class="nc" id="L54">        var tm = new JpaTransactionManager();</span>
+<span class="nc" id="L55">        tm.setEntityManagerFactory(emf.getObject());</span>
+<span class="nc" id="L56">        return tm;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

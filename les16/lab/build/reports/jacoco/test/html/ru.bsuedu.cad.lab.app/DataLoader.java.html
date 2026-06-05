@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataLoader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.app</a> &gt; <span class="el_source">DataLoader.java</span></div><h1>DataLoader.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.app;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
+import jakarta.annotation.PostConstruct;
+import ru.bsuedu.cad.lab.entity.Category;
+import ru.bsuedu.cad.lab.entity.Customer;
+import ru.bsuedu.cad.lab.entity.Product;
+import ru.bsuedu.cad.lab.repository.CategoryRepository;
+import ru.bsuedu.cad.lab.repository.CustomerRepository;
+import ru.bsuedu.cad.lab.repository.ProductRepository;
+import ru.bsuedu.cad.lab.service.OrderService;
+
+@Component
+public class DataLoader {
+    private final CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final CustomerRepository customerRepository;
+    private final OrderService orderService;
+
+<span class="nc" id="L30">    public DataLoader(CategoryRepository categoryRepository, ProductRepository productRepository, CustomerRepository customerRepository, OrderService orderService) {</span>
+<span class="nc" id="L31">        this.categoryRepository = categoryRepository;</span>
+<span class="nc" id="L32">        this.productRepository = productRepository;</span>
+<span class="nc" id="L33">        this.customerRepository = customerRepository;</span>
+<span class="nc" id="L34">        this.orderService = orderService;</span>
+<span class="nc" id="L35">    }</span>
+
+    @PostConstruct
+    public void run() throws Exception {
+<span class="nc" id="L39">        loadCategories();</span>
+<span class="nc" id="L40">        loadCustomers();</span>
+<span class="nc" id="L41">        ensureDefaultCustomers();</span>
+<span class="nc" id="L42">        loadProducts();</span>
+
+        // create a demo order for first customer and first product
+<span class="nc" id="L45">        var customer = customerRepository.findAll().stream().findFirst().orElse(null);</span>
+<span class="nc" id="L46">        var product = productRepository.findAll().stream().findFirst().orElse(null);</span>
+<span class="nc bnc" id="L47" title="All 4 branches missed.">        if (customer != null &amp;&amp; product != null) {</span>
+<span class="nc" id="L48">            Map&lt;Long,Integer&gt; items = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L49">            items.put(product.getProductId(), 1);</span>
+<span class="nc" id="L50">            var order = orderService.createOrder(customer.getCustomerId(), items, &quot;&quot;);</span>
+<span class="nc" id="L51">            System.out.println(&quot;Created order id=&quot; + order.getOrderId());</span>
+<span class="nc" id="L52">        } else {</span>
+<span class="nc" id="L53">            System.out.println(&quot;No customers or products available to create demo order.&quot;);</span>
+        }
+<span class="nc" id="L55">    }</span>
+
+    private void loadCategories() {
+<span class="nc" id="L58">        Path path = Path.of(&quot;assets/category.csv&quot;);</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if (!Files.exists(path)) return;</span>
+<span class="nc" id="L60">        try (BufferedReader br = Files.newBufferedReader(path)) {</span>
+            String line;
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            while ((line = br.readLine()) != null) {</span>
+<span class="nc" id="L63">                String[] parts = line.split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                if (parts.length &lt; 1) continue;</span>
+<span class="nc" id="L65">                Category c = new Category();</span>
+<span class="nc" id="L66">                c.setName(parts[0].trim());</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">                if (parts.length &gt; 1) c.setDescription(parts[1].trim());</span>
+<span class="nc" id="L68">                categoryRepository.save(c);</span>
+<span class="nc" id="L69">            }</span>
+<span class="nc" id="L70">            System.out.println(&quot;Categories loaded: &quot; + categoryRepository.count());</span>
+<span class="nc" id="L71">        } catch (IOException e) {</span>
+<span class="nc" id="L72">            e.printStackTrace();</span>
+<span class="nc" id="L73">        }</span>
+<span class="nc" id="L74">    }</span>
+
+    private void loadCustomers() {
+<span class="nc" id="L77">        Path path = Path.of(&quot;assets/customer.csv&quot;);</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        if (!Files.exists(path)) return;</span>
+<span class="nc" id="L79">        try (BufferedReader br = Files.newBufferedReader(path)) {</span>
+            String line;
+<span class="nc bnc" id="L81" title="All 2 branches missed.">            while ((line = br.readLine()) != null) {</span>
+<span class="nc" id="L82">                String[] parts = line.split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">                if (parts.length &lt; 1) continue;</span>
+<span class="nc" id="L84">                Customer c = new Customer();</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">                c.setName(parts.length&gt;0?parts[0].trim():&quot;&quot;);</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">                c.setEmail(parts.length&gt;1?parts[1].trim():&quot;&quot;);</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">                c.setPhone(parts.length&gt;2?parts[2].trim():&quot;&quot;);</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">                c.setAddress(parts.length&gt;3?parts[3].trim():&quot;&quot;);</span>
+<span class="nc" id="L89">                customerRepository.save(c);</span>
+<span class="nc" id="L90">            }</span>
+<span class="nc" id="L91">            System.out.println(&quot;Customers loaded: &quot; + customerRepository.count());</span>
+<span class="nc" id="L92">        } catch (IOException e) {</span>
+<span class="nc" id="L93">            e.printStackTrace();</span>
+<span class="nc" id="L94">        }</span>
+<span class="nc" id="L95">    }</span>
+
+    private void ensureDefaultCustomers() {
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        if (customerRepository.count() &gt; 0) {</span>
+<span class="nc" id="L99">            return;</span>
+        }
+
+<span class="nc" id="L102">        Customer c1 = new Customer();</span>
+<span class="nc" id="L103">        c1.setName(&quot;Иван Иванов&quot;);</span>
+<span class="nc" id="L104">        c1.setEmail(&quot;ivan@example.com&quot;);</span>
+<span class="nc" id="L105">        c1.setPhone(&quot;+7 900 000 0001&quot;);</span>
+<span class="nc" id="L106">        customerRepository.save(c1);</span>
+
+<span class="nc" id="L108">        Customer c2 = new Customer();</span>
+<span class="nc" id="L109">        c2.setName(&quot;Пётр Петров&quot;);</span>
+<span class="nc" id="L110">        c2.setEmail(&quot;petr@example.com&quot;);</span>
+<span class="nc" id="L111">        c2.setPhone(&quot;+7 900 000 0002&quot;);</span>
+<span class="nc" id="L112">        customerRepository.save(c2);</span>
+
+<span class="nc" id="L114">        System.out.println(&quot;Default customers created: &quot; + customerRepository.count());</span>
+<span class="nc" id="L115">    }</span>
+
+    private void loadProducts() {
+<span class="nc" id="L118">        Path path = Path.of(&quot;assets/product.csv&quot;);</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">        if (!Files.exists(path)) return;</span>
+<span class="nc" id="L120">        try (BufferedReader br = Files.newBufferedReader(path)) {</span>
+            String line;
+<span class="nc bnc" id="L122" title="All 2 branches missed.">            while ((line = br.readLine()) != null) {</span>
+<span class="nc" id="L123">                String[] parts = line.split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">                if (parts.length &lt; 4) continue;</span>
+<span class="nc" id="L125">                Product p = new Product();</span>
+<span class="nc" id="L126">                p.setName(parts[0].trim());</span>
+<span class="nc" id="L127">                p.setDescription(parts[1].trim());</span>
+                // try to find category by name
+<span class="nc" id="L129">                var cat = categoryRepository.findAll().stream().filter(c -&gt; c.getName().equalsIgnoreCase(parts[2].trim())).findFirst().orElse(null);</span>
+<span class="nc" id="L130">                p.setCategory(cat);</span>
+<span class="nc" id="L131">                try { p.setPrice(new BigDecimal(parts[3].trim())); } catch (Exception ex) { p.setPrice(BigDecimal.ZERO); }</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">                p.setStockQuantity(parts.length&gt;4?Integer.parseInt(parts[4].trim()):0);</span>
+<span class="nc" id="L133">                p.setCreatedAt(LocalDateTime.now());</span>
+<span class="nc" id="L134">                productRepository.save(p);</span>
+<span class="nc" id="L135">            }</span>
+<span class="nc" id="L136">            System.out.println(&quot;Products loaded: &quot; + productRepository.count());</span>
+<span class="nc" id="L137">        } catch (IOException e) {</span>
+<span class="nc" id="L138">            e.printStackTrace();</span>
+<span class="nc" id="L139">        }</span>
+<span class="nc" id="L140">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

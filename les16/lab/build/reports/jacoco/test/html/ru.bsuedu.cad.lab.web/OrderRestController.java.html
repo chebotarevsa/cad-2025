@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.web</a> &gt; <span class="el_source">OrderRestController.java</span></div><h1>OrderRestController.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.web;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import ru.bsuedu.cad.lab.entity.OrderDetail;
+import ru.bsuedu.cad.lab.entity.OrderEntity;
+import ru.bsuedu.cad.lab.repository.OrderRepository;
+import ru.bsuedu.cad.lab.service.OrderService;
+import ru.bsuedu.cad.lab.web.dto.OrderItemDto;
+import ru.bsuedu.cad.lab.web.dto.OrderRequest;
+import ru.bsuedu.cad.lab.web.dto.OrderResponse;
+import ru.bsuedu.cad.lab.web.dto.OrderUpdateRequest;
+
+@RestController
+@RequestMapping(&quot;/api/orders&quot;)
+public class OrderRestController {
+    private final OrderService orderService;
+    private final OrderRepository orderRepository;
+
+<span class="fc" id="L34">    public OrderRestController(OrderService orderService, OrderRepository orderRepository) {</span>
+<span class="fc" id="L35">        this.orderService = orderService;</span>
+<span class="fc" id="L36">        this.orderRepository = orderRepository;</span>
+<span class="fc" id="L37">    }</span>
+
+    @GetMapping
+    @PreAuthorize(&quot;hasAnyRole('USER','MANAGER')&quot;)
+    public List&lt;OrderResponse&gt; listOrders() {
+<span class="nc" id="L42">        return orderService.findAll().stream().map(this::toResponse).collect(Collectors.toList());</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    @PreAuthorize(&quot;hasAnyRole('USER','MANAGER')&quot;)
+    public OrderResponse getOrder(@PathVariable Long id) {
+<span class="fc" id="L48">        return orderRepository.findById(id)</span>
+<span class="fc" id="L49">                .map(this::toResponse)</span>
+<span class="pc" id="L50">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Order not found&quot;));</span>
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize(&quot;hasRole('MANAGER')&quot;)
+    public OrderResponse createOrder(@RequestBody OrderRequest request) {
+<span class="fc" id="L57">        OrderEntity order = orderService.createOrder(request.getCustomerId(), request.getProductQuantities(), request.getShippingAddress());</span>
+<span class="fc" id="L58">        return toResponse(order);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    @PreAuthorize(&quot;hasRole('MANAGER')&quot;)
+    public OrderResponse updateOrder(@PathVariable Long id, @RequestBody OrderUpdateRequest request) {
+        try {
+<span class="fc" id="L65">            OrderEntity order = orderService.updateOrder(id, request.getStatus(), request.getShippingAddress());</span>
+<span class="fc" id="L66">            return toResponse(order);</span>
+<span class="nc" id="L67">        } catch (Exception e) {</span>
+<span class="nc" id="L68">            throw new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Order not found&quot;, e);</span>
+        }
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize(&quot;hasRole('MANAGER')&quot;)
+    public void deleteOrder(@PathVariable Long id) {
+<span class="nc" id="L76">        orderService.deleteOrder(id);</span>
+<span class="nc" id="L77">    }</span>
+
+    private OrderResponse toResponse(OrderEntity order) {
+<span class="fc" id="L80">        OrderResponse response = new OrderResponse();</span>
+<span class="fc" id="L81">        response.setOrderId(order.getOrderId());</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        response.setCustomerId(order.getCustomer() != null ? order.getCustomer().getCustomerId() : null);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        response.setCustomerName(order.getCustomer() != null ? order.getCustomer().getName() : null);</span>
+<span class="fc" id="L84">        response.setOrderDate(order.getOrderDate());</span>
+<span class="fc" id="L85">        response.setTotalPrice(order.getTotalPrice());</span>
+<span class="fc" id="L86">        response.setStatus(order.getStatus());</span>
+<span class="fc" id="L87">        response.setShippingAddress(order.getShippingAddress());</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        response.setItems(order.getOrderDetails() != null ? order.getOrderDetails().stream().map(this::toItemDto).collect(Collectors.toList()) : List.of());</span>
+<span class="fc" id="L89">        return response;</span>
+    }
+
+    private OrderItemDto toItemDto(OrderDetail detail) {
+<span class="fc" id="L93">        OrderItemDto item = new OrderItemDto();</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">        item.setProductId(detail.getProduct() != null ? detail.getProduct().getProductId() : null);</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        item.setProductName(detail.getProduct() != null ? detail.getProduct().getName() : null);</span>
+<span class="fc" id="L96">        item.setQuantity(detail.getQuantity());</span>
+<span class="fc" id="L97">        item.setPrice(detail.getPrice());</span>
+<span class="fc" id="L98">        return item;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
