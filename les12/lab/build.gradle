@@ -1,0 +1,38 @@
+plugins {
+    id 'war'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+    implementation 'org.springframework:spring-webmvc:6.1.4'
+    implementation 'org.springframework:spring-orm:6.1.4'
+
+    implementation 'org.hibernate.orm:hibernate-core:6.4.4.Final'
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+
+    implementation 'com.h2database:h2:2.2.224'
+    implementation 'com.zaxxer:HikariCP:5.1.0'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+
+    implementation 'org.thymeleaf:thymeleaf-spring6:3.1.2.RELEASE'
+
+    implementation 'org.slf4j:slf4j-api:2.0.16'
+    implementation 'ch.qos.logback:logback-classic:1.5.12'
+    implementation 'com.google.code.gson:gson:2.10.1'
+}
+
+war {
+    archiveBaseName = 'zoo-shop-spring'
+    archiveVersion = '1.0'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}

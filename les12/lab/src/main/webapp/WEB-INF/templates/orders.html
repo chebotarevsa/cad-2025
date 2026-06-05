@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders List</title>
+</head>
+<body>
+<h1>Orders List</h1>
+<a href="/orders/new">Create New Order</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Created Date</th>
+        <th>Customer</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}">1</td>
+        <td th:text="${order.createdAt}">2024-01-01</td>
+        <td th:text="${order.customer.name}">Customer</td>
+        <td>
+            <a th:href="@{/orders/edit/{id}(id=${order.id})}">Edit</a>
+            <a th:href="@{/orders/delete/{id}(id=${order.id})}" onclick="return confirm('Delete?')">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

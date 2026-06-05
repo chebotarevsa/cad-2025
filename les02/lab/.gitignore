@@ -1,0 +1,14 @@
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Build
+target/
+out/
+*.class
+
+# OS
+.DS_Store
+Thumbs.db
