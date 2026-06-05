@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderWebController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.web</a> &gt; <span class="el_source">OrderWebController.java</span></div><h1>OrderWebController.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.web;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import jakarta.servlet.http.HttpServletRequest;
+import ru.bsuedu.cad.lab.entity.OrderEntity;
+import ru.bsuedu.cad.lab.repository.CustomerRepository;
+import ru.bsuedu.cad.lab.repository.OrderRepository;
+import ru.bsuedu.cad.lab.repository.ProductRepository;
+import ru.bsuedu.cad.lab.service.OrderService;
+
+@Controller
+@RequestMapping(&quot;/orders&quot;)
+@PreAuthorize(&quot;hasAnyRole('USER','MANAGER')&quot;)
+public class OrderWebController {
+    private final OrderService orderService;
+    private final OrderRepository orderRepository;
+    private final CustomerRepository customerRepository;
+    private final ProductRepository productRepository;
+
+    public OrderWebController(OrderService orderService,
+                              OrderRepository orderRepository,
+                              CustomerRepository customerRepository,
+<span class="nc" id="L35">                              ProductRepository productRepository) {</span>
+<span class="nc" id="L36">        this.orderService = orderService;</span>
+<span class="nc" id="L37">        this.orderRepository = orderRepository;</span>
+<span class="nc" id="L38">        this.customerRepository = customerRepository;</span>
+<span class="nc" id="L39">        this.productRepository = productRepository;</span>
+<span class="nc" id="L40">    }</span>
+
+    @GetMapping
+    public String listOrders(Model model, HttpServletRequest request) {
+<span class="nc" id="L44">        model.addAttribute(&quot;orders&quot;, orderService.findAll());</span>
+<span class="nc" id="L45">        model.addAttribute(&quot;isManager&quot;, request.isUserInRole(&quot;MANAGER&quot;));</span>
+<span class="nc" id="L46">        return &quot;orders&quot;;</span>
+    }
+
+    @GetMapping(&quot;/new&quot;)
+    @PreAuthorize(&quot;hasRole('MANAGER')&quot;)
+    public String showCreateForm(Model model) {
+<span class="nc" id="L52">        model.addAttribute(&quot;orderForm&quot;, new OrderFormData());</span>
+<span class="nc" id="L53">        model.addAttribute(&quot;customers&quot;, customerRepository.findAll());</span>
+<span class="nc" id="L54">        model.addAttribute(&quot;products&quot;, productRepository.findAll());</span>
+<span class="nc" id="L55">        model.addAttribute(&quot;action&quot;, &quot;/orders&quot;);</span>
+<span class="nc" id="L56">        model.addAttribute(&quot;pageTitle&quot;, &quot;Create Order&quot;);</span>
+<span class="nc" id="L57">        return &quot;order-form&quot;;</span>
+    }
+
+    @PostMapping
+    @PreAuthorize(&quot;hasRole('MANAGER')&quot;)
+    public String createOrder(@ModelAttribute OrderFormData orderForm, RedirectAttributes redirectAttributes) {
+<span class="nc" id="L63">        Map&lt;Long, Integer&gt; productQuantities = parseProductIds(orderForm.getProductIds());</span>
+<span class="nc" id="L64">        orderService.createOrder(orderForm.getCustomerId(), productQuantities, orderForm.getShippingAddress());</span>
+<span class="nc" id="L65">        redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;Order created successfully&quot;);</span>
+<span class="nc" id="L66">        return &quot;redirect:/orders&quot;;</span>
+    }
+
+    @GetMapping(&quot;/{id}/edit&quot;)
+    @PreAuthorize(&quot;hasRole('MANAGER')&quot;)
+    public String showEditForm(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+<span class="nc" id="L72">        OrderEntity order = orderRepository.findById(id).orElse(null);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (order == null) {</span>
+<span class="nc" id="L74">            redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;Order not found&quot;);</span>
+<span class="nc" id="L75">            return &quot;redirect:/orders&quot;;</span>
+        }
+<span class="nc" id="L77">        OrderFormData orderForm = new OrderFormData();</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        orderForm.setCustomerId(order.getCustomer() != null ? order.getCustomer().getCustomerId() : null);</span>
+<span class="nc" id="L79">        orderForm.setShippingAddress(order.getShippingAddress());</span>
+<span class="nc" id="L80">        orderForm.setStatus(order.getStatus());</span>
+<span class="nc" id="L81">        model.addAttribute(&quot;orderForm&quot;, orderForm);</span>
+<span class="nc" id="L82">        model.addAttribute(&quot;orderId&quot;, id);</span>
+<span class="nc" id="L83">        model.addAttribute(&quot;customers&quot;, customerRepository.findAll());</span>
+<span class="nc" id="L84">        model.addAttribute(&quot;products&quot;, productRepository.findAll());</span>
+<span class="nc" id="L85">        model.addAttribute(&quot;action&quot;, &quot;/orders/&quot; + id);</span>
+<span class="nc" id="L86">        model.addAttribute(&quot;pageTitle&quot;, &quot;Edit Order&quot;);</span>
+<span class="nc" id="L87">        return &quot;order-form&quot;;</span>
+    }
+
+    @PostMapping(&quot;/{id}&quot;)
+    @PreAuthorize(&quot;hasRole('MANAGER')&quot;)
+    public String updateOrder(@PathVariable Long id, @ModelAttribute OrderFormData orderForm, RedirectAttributes redirectAttributes) {
+        try {
+<span class="nc" id="L94">            orderService.updateOrder(id, orderForm.getStatus(), orderForm.getShippingAddress());</span>
+<span class="nc" id="L95">            redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;Order updated successfully&quot;);</span>
+<span class="nc" id="L96">        } catch (Exception e) {</span>
+<span class="nc" id="L97">            redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;Unable to update order&quot;);</span>
+<span class="nc" id="L98">        }</span>
+<span class="nc" id="L99">        return &quot;redirect:/orders&quot;;</span>
+    }
+
+    @PostMapping(&quot;/{id}/delete&quot;)
+    @PreAuthorize(&quot;hasRole('MANAGER')&quot;)
+    public String deleteOrder(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+<span class="nc" id="L106">            orderService.deleteOrder(id);</span>
+<span class="nc" id="L107">            redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;Order deleted&quot;);</span>
+<span class="nc" id="L108">        } catch (Exception e) {</span>
+<span class="nc" id="L109">            redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;Unable to delete order&quot;);</span>
+<span class="nc" id="L110">        }</span>
+<span class="nc" id="L111">        return &quot;redirect:/orders&quot;;</span>
+    }
+
+    private Map&lt;Long, Integer&gt; parseProductIds(String productIds) {
+<span class="nc" id="L115">        Map&lt;Long, Integer&gt; result = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L116" title="All 4 branches missed.">        if (productIds == null || productIds.isBlank()) {</span>
+<span class="nc" id="L117">            return result;</span>
+        }
+<span class="nc bnc" id="L119" title="All 2 branches missed.">        for (String item : productIds.split(&quot;,&quot;)) {</span>
+<span class="nc" id="L120">            String trimmed = item.trim();</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">            if (trimmed.isEmpty()) {</span>
+<span class="nc" id="L122">                continue;</span>
+            }
+            try {
+<span class="nc" id="L125">                Long id = Long.valueOf(trimmed);</span>
+<span class="nc" id="L126">                result.merge(id, 1, Integer::sum);</span>
+<span class="nc" id="L127">            } catch (NumberFormatException e) {</span>
+                // ignore invalid values
+<span class="nc" id="L129">            }</span>
+        }
+<span class="nc" id="L131">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

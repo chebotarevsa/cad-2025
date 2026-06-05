@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WebMvcConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.config</a> &gt; <span class="el_source">WebMvcConfig.java</span></div><h1>WebMvcConfig.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring6.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = &quot;ru.bsuedu.cad.lab&quot;)
+<span class="nc" id="L16">public class WebMvcConfig implements WebMvcConfigurer {</span>
+
+    @Bean
+    public SpringResourceTemplateResolver templateResolver() {
+<span class="nc" id="L20">        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();</span>
+<span class="nc" id="L21">        resolver.setPrefix(&quot;classpath:/templates/&quot;);</span>
+<span class="nc" id="L22">        resolver.setSuffix(&quot;.html&quot;);</span>
+<span class="nc" id="L23">        resolver.setTemplateMode(TemplateMode.HTML);</span>
+<span class="nc" id="L24">        resolver.setCharacterEncoding(&quot;UTF-8&quot;);</span>
+<span class="nc" id="L25">        resolver.setCacheable(false);</span>
+<span class="nc" id="L26">        return resolver;</span>
+    }
+
+    @Bean
+    public SpringTemplateEngine templateEngine(SpringResourceTemplateResolver templateResolver) {
+<span class="nc" id="L31">        SpringTemplateEngine engine = new SpringTemplateEngine();</span>
+<span class="nc" id="L32">        engine.setTemplateResolver(templateResolver);</span>
+<span class="nc" id="L33">        return engine;</span>
+    }
+
+    @Bean
+    public ThymeleafViewResolver viewResolver(SpringTemplateEngine templateEngine) {
+<span class="nc" id="L38">        ThymeleafViewResolver resolver = new ThymeleafViewResolver();</span>
+<span class="nc" id="L39">        resolver.setTemplateEngine(templateEngine);</span>
+<span class="nc" id="L40">        resolver.setCharacterEncoding(&quot;UTF-8&quot;);</span>
+<span class="nc" id="L41">        return resolver;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

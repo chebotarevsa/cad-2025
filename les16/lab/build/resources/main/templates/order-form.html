@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${pageTitle}">Order Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+</head>
+<body class="p-4">
+<div class="container">
+    <h1 th:text="${pageTitle}"></h1>
+
+    <form th:action="${action}" th:object="${orderForm}" method="post" class="row g-3">
+        <div class="col-12">
+            <label class="form-label">Customer</label>
+            <select class="form-select" th:field="*{customerId}">
+                <option value="" disabled>Choose customer</option>
+                <option th:each="customer : ${customers}" th:value="${customer.customerId}" th:text="${customer.name}"></option>
+            </select>
+        </div>
+
+        <div class="col-12" th:if="${pageTitle == 'Create Order'}">
+            <label class="form-label">Product IDs (comma-separated)</label>
+            <input type="text" class="form-control" th:field="*{productIds}" placeholder="1,2,3" />
+            <div class="form-text">Example: 1,2,3</div>
+        </div>
+
+        <div class="col-12">
+            <label class="form-label">Shipping Address</label>
+            <input type="text" class="form-control" th:field="*{shippingAddress}" />
+        </div>
+
+        <div class="col-12" th:if="${pageTitle == 'Edit Order'}">
+            <label class="form-label">Status</label>
+            <input type="text" class="form-control" th:field="*{status}" />
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-secondary" th:href="@{/orders}">Cancel</a>
+        </div>
+    </form>
+
+    <div class="mt-4">
+        <h2>Available Products</h2>
+        <ul class="list-group">
+            <li class="list-group-item" th:each="product : ${products}" th:text="${product.productId} + ' — ' + ${product.name} + ' (stock: ' + ${product.stockQuantity} + ')' "></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

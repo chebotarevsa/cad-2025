@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Customer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.entity</a> &gt; <span class="el_source">Customer.java</span></div><h1>Customer.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.entity;
+
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = &quot;customers&quot;)
+<span class="fc" id="L8">public class Customer {</span>
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long customerId;
+
+    private String name;
+    private String email;
+    private String phone;
+    private String address;
+
+    @OneToMany(mappedBy = &quot;customer&quot;)
+    private List&lt;OrderEntity&gt; orders;
+
+    // getters and setters
+<span class="fc" id="L22">    public Long getCustomerId() { return customerId; }</span>
+<span class="fc" id="L23">    public void setCustomerId(Long customerId) { this.customerId = customerId; }</span>
+<span class="fc" id="L24">    public String getName() { return name; }</span>
+<span class="fc" id="L25">    public void setName(String name) { this.name = name; }</span>
+<span class="nc" id="L26">    public String getEmail() { return email; }</span>
+<span class="fc" id="L27">    public void setEmail(String email) { this.email = email; }</span>
+<span class="nc" id="L28">    public String getPhone() { return phone; }</span>
+<span class="nc" id="L29">    public void setPhone(String phone) { this.phone = phone; }</span>
+<span class="nc" id="L30">    public String getAddress() { return address; }</span>
+<span class="nc" id="L31">    public void setAddress(String address) { this.address = address; }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

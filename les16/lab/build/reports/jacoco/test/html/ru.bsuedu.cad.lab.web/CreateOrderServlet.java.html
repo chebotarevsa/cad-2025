@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreateOrderServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab</a> &gt; <a href="index.source.html" class="el_package">ru.bsuedu.cad.lab.web</a> &gt; <span class="el_source">CreateOrderServlet.java</span></div><h1>CreateOrderServlet.java</h1><pre class="source lang-java linenums">package ru.bsuedu.cad.lab.web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import ru.bsuedu.cad.lab.entity.Product;
+import ru.bsuedu.cad.lab.repository.CustomerRepository;
+import ru.bsuedu.cad.lab.repository.ProductRepository;
+import ru.bsuedu.cad.lab.service.OrderService;
+
+@WebServlet(urlPatterns = &quot;/create-order&quot;)
+<span class="nc" id="L22">public class CreateOrderServlet extends HttpServlet {</span>
+
+    private CustomerRepository customerRepository;
+    private ProductRepository productRepository;
+    private OrderService orderService;
+
+    @Override
+    public void init() throws ServletException {
+<span class="nc" id="L30">        WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());</span>
+<span class="nc" id="L31">        this.customerRepository = ctx.getBean(CustomerRepository.class);</span>
+<span class="nc" id="L32">        this.productRepository = ctx.getBean(ProductRepository.class);</span>
+<span class="nc" id="L33">        this.orderService = ctx.getBean(OrderService.class);</span>
+<span class="nc" id="L34">    }</span>
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<span class="nc" id="L38">        resp.setContentType(&quot;text/html; charset=UTF-8&quot;);</span>
+<span class="nc" id="L39">        var customers = customerRepository.findAll();</span>
+<span class="nc" id="L40">        var products = productRepository.findAll();</span>
+
+<span class="nc" id="L42">        try (PrintWriter w = resp.getWriter()) {</span>
+<span class="nc" id="L43">            w.println(&quot;&lt;html&gt;&lt;head&gt;&lt;meta charset=\&quot;utf-8\&quot;&gt;&lt;title&gt;Create Order&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&quot;);</span>
+<span class="nc" id="L44">            w.println(&quot;&lt;h1&gt;Create Order&lt;/h1&gt;&quot;);</span>
+<span class="nc" id="L45">            w.println(&quot;&lt;p&gt;Введите id покупателя и id товаров через запятую.&lt;/p&gt;&quot;);</span>
+<span class="nc" id="L46">            w.println(&quot;&lt;form method=\&quot;post\&quot;&gt;&quot;);</span>
+<span class="nc" id="L47">            w.println(&quot;Customer id: &lt;input type=\&quot;text\&quot; name=\&quot;customerId\&quot;/&gt;&lt;br/&gt;&lt;br/&gt;&quot;);</span>
+<span class="nc" id="L48">            w.println(&quot;Product ids (comma-separated): &lt;input type=\&quot;text\&quot; name=\&quot;productIds\&quot;/&gt;&lt;br/&gt;&lt;br/&gt;&quot;);</span>
+<span class="nc" id="L49">            w.println(&quot;&lt;input type=\&quot;submit\&quot; value=\&quot;Create\&quot;/&gt; &quot;);</span>
+<span class="nc" id="L50">            w.println(&quot;&lt;/form&gt;&quot;);</span>
+
+<span class="nc" id="L52">            w.println(&quot;&lt;h2&gt;Available Customers&lt;/h2&gt;&quot;);</span>
+<span class="nc" id="L53">            w.println(&quot;&lt;ul&gt;&quot;);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">            for (var c : customers) {</span>
+<span class="nc" id="L55">                w.printf(&quot;&lt;li&gt;id=%d — %s&lt;/li&gt;&quot;, c.getCustomerId(), c.getName());</span>
+<span class="nc" id="L56">            }</span>
+<span class="nc" id="L57">            w.println(&quot;&lt;/ul&gt;&quot;);</span>
+
+<span class="nc" id="L59">            w.println(&quot;&lt;h2&gt;Available Products&lt;/h2&gt;&quot;);</span>
+<span class="nc" id="L60">            w.println(&quot;&lt;ul&gt;&quot;);</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            for (Product p : products) {</span>
+<span class="nc" id="L62">                w.printf(&quot;&lt;li&gt;id=%d — %s (stock: %s)&lt;/li&gt;&quot;, p.getProductId(), p.getName(), p.getStockQuantity());</span>
+<span class="nc" id="L63">            }</span>
+<span class="nc" id="L64">            w.println(&quot;&lt;/ul&gt;&quot;);</span>
+
+<span class="nc" id="L66">            w.println(&quot;&lt;/body&gt;&lt;/html&gt;&quot;);</span>
+        }
+<span class="nc" id="L68">    }</span>
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<span class="nc" id="L72">        String customerParam = req.getParameter(&quot;customerId&quot;);</span>
+<span class="nc" id="L73">        String productIdsParam = req.getParameter(&quot;productIds&quot;);</span>
+
+<span class="nc bnc" id="L75" title="All 8 branches missed.">        if (customerParam == null || customerParam.isBlank() || productIdsParam == null || productIdsParam.isBlank()) {</span>
+<span class="nc" id="L76">            resp.sendRedirect(req.getContextPath() + &quot;/create-order&quot;);</span>
+<span class="nc" id="L77">            return;</span>
+        }
+
+        Long customerId;
+        try {
+<span class="nc" id="L82">            customerId = Long.valueOf(customerParam.trim());</span>
+<span class="nc" id="L83">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L84">            resp.sendRedirect(req.getContextPath() + &quot;/create-order&quot;);</span>
+<span class="nc" id="L85">            return;</span>
+<span class="nc" id="L86">        }</span>
+
+<span class="nc" id="L88">        Map&lt;Long, Integer&gt; productQuantities = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        for (String item : productIdsParam.split(&quot;,&quot;)) {</span>
+<span class="nc" id="L90">            String trimmed = item.trim();</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            if (trimmed.isEmpty()) {</span>
+<span class="nc" id="L92">                continue;</span>
+            }
+            try {
+<span class="nc" id="L95">                Long productId = Long.valueOf(trimmed);</span>
+<span class="nc" id="L96">                productQuantities.merge(productId, 1, Integer::sum);</span>
+<span class="nc" id="L97">            } catch (NumberFormatException ignored) {</span>
+<span class="nc" id="L98">            }</span>
+        }
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        if (!productQuantities.isEmpty()) {</span>
+<span class="nc" id="L102">            orderService.createOrder(customerId, productQuantities, &quot;&quot;);</span>
+        }
+
+<span class="nc" id="L105">        resp.sendRedirect(req.getContextPath() + &quot;/orders&quot;);</span>
+<span class="nc" id="L106">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
