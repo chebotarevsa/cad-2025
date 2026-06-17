@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les02/demo/hello" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les02/demo/hello" />
+            <option value="$PROJECT_DIR$/les02/demo/hello/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les03/demo/componet" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les03/demo/componet" />
+            <option value="$PROJECT_DIR$/les03/demo/componet/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les04/demo/aspectj" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les04/demo/aspectj" />
+            <option value="$PROJECT_DIR$/les04/demo/aspectj/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les04/demo/spring-aop" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les04/demo/spring-aop" />
+            <option value="$PROJECT_DIR$/les04/demo/spring-aop/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les05/demo/persona" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les05/demo/persona" />
+            <option value="$PROJECT_DIR$/les05/demo/persona/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les06/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les06/demo" />
+            <option value="$PROJECT_DIR$/les06/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les07/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les07/demo" />
+            <option value="$PROJECT_DIR$/les07/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les08/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les08/demo" />
+            <option value="$PROJECT_DIR$/les08/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les09/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les09/demo" />
+            <option value="$PROJECT_DIR$/les09/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les10/demo/jackson_example" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les10/demo/jaxb_example" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les11/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les11/demo" />
+            <option value="$PROJECT_DIR$/les11/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les12/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les12/demo" />
+            <option value="$PROJECT_DIR$/les12/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les13/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les13/demo" />
+            <option value="$PROJECT_DIR$/les13/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les14/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les14/demo" />
+            <option value="$PROJECT_DIR$/les14/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les15/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les15/demo" />
+            <option value="$PROJECT_DIR$/les15/demo/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les16/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les17/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/les18/demo" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
+        <option name="gradleJvm" value="17" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
