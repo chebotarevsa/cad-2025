@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Список задач</title>
+    <style>
+        body {
+            max-width: 760px;
+            margin: 40px auto;
+            padding: 0 20px;
+            font-family: Arial, sans-serif;
+            color: #222;
+            background: #f5f5f5;
+        }
+
+        h1, h2 {
+            margin-bottom: 16px;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        li, .add-form {
+            margin-bottom: 12px;
+            padding: 16px;
+            border: 1px solid #d8d8d8;
+            border-radius: 6px;
+            background: white;
+        }
+
+        .task-title {
+            font-weight: bold;
+        }
+
+        .task-description {
+            margin: 6px 0;
+            color: #555;
+        }
+
+        .completed .task-title,
+        .completed .task-description {
+            text-decoration: line-through;
+            color: #777;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        label, input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input {
+            margin: 5px 0 12px;
+            padding: 8px;
+        }
+
+        button, .delete-link {
+            display: inline-block;
+            padding: 7px 12px;
+            border: 0;
+            border-radius: 4px;
+            color: white;
+            background: #2864a8;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .delete-link {
+            margin-top: 10px;
+            background: #b33a3a;
+        }
+    </style>
+</head>
+<body>
+<h1>Список задач</h1>
+
+<p th:if="${tasks.isEmpty()}">Задач пока нет.</p>
+
+<ul>
+    <li th:each="task : ${tasks}" th:classappend="${task.completed} ? 'completed'">
+        <div class="task-title" th:text="${task.title}"></div>
+        <div class="task-description" th:text="${task.description}"></div>
+        <div th:text="${task.completed} ? 'Выполнена' : 'Не выполнена'"></div>
+
+        <form th:if="${!task.completed}"
+              th:action="@{/updateTask/{id}(id=${task.id})}" method="post">
+            <input type="hidden" name="completed" value="true">
+            <button type="submit">Отметить выполненной</button>
+        </form>
+
+        <a class="delete-link"
+           th:href="@{/deleteTask/{id}(id=${task.id})}"
+           onclick="return confirm('Удалить эту задачу?')">Удалить</a>
+    </li>
+</ul>
+
+<h2>Добавить задачу</h2>
+<form class="add-form" th:action="@{/addTask}" method="post">
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Описание:</label>
+    <input type="text" id="description" name="description">
+
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>
