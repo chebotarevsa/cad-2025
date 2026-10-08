@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">Форма заказа</title>
+    <style>
+        body { font-family: Segoe UI, Arial, sans-serif; margin: 24px; background: #f7f4ef; color: #222; }
+        form { background: #fff; padding: 16px; border: 1px solid #ddd; max-width: 560px; }
+        label { display: block; margin: 10px 0 4px; }
+        select, input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { margin-top: 14px; padding: 10px 16px; background: #5b3a8c; color: #fff; border: 0; border-radius: 6px; }
+        .err { color: #b00020; }
+    </style>
+</head>
+<body>
+<h1 th:text="${pageTitle}">Форма заказа</h1>
+<p><a th:href="@{/orders}">← К списку заказов</a></p>
+<p th:if="${error}" class="err" th:text="${error}"></p>
+
+<form th:action="${formAction}" th:object="${orderForm}" method="post">
+    <label>Клиент</label>
+    <select th:field="*{customerId}" required>
+        <option th:each="c : ${customers}" th:value="${c.customerId}" th:text="${c.name}">Клиент</option>
+    </select>
+
+    <label>Товар</label>
+    <select th:field="*{productId}" required>
+        <option th:each="p : ${products}"
+                th:value="${p.productId}"
+                th:text="${p.name + ' (остаток: ' + p.stockQuantity + ', цена: ' + p.price + ')'}">Товар</option>
+    </select>
+
+    <label>Количество</label>
+    <input type="number" th:field="*{quantity}" min="1" required>
+
+    <label>Статус</label>
+    <input type="text" th:field="*{status}" placeholder="NEW">
+
+    <label>Адрес доставки</label>
+    <input type="text" th:field="*{shippingAddress}" placeholder="если пусто — адрес клиента">
+
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

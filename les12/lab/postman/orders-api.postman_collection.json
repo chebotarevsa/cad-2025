@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "Pet Store Orders API (ЛР6)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET all orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/pet-store/api/orders"
+      }
+    },
+    {
+      "name": "GET order by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/pet-store/api/orders/1"
+      }
+    },
+    {
+      "name": "POST create order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"productId\": 1,\n  \"quantity\": 2,\n  \"status\": \"NEW\",\n  \"shippingAddress\": \"Москва, ул. Ленина, д. 10\"\n}"
+        },
+        "url": "http://localhost:8080/pet-store/api/orders"
+      }
+    },
+    {
+      "name": "PUT update order",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"productId\": 2,\n  \"quantity\": 1,\n  \"status\": \"PAID\",\n  \"shippingAddress\": \"Москва, ул. Ленина, д. 10\"\n}"
+        },
+        "url": "http://localhost:8080/pet-store/api/orders/1"
+      }
+    },
+    {
+      "name": "DELETE order",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "http://localhost:8080/pet-store/api/orders/1"
+      }
+    }
+  ]
+}

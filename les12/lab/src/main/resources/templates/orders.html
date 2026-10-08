@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+    <style>
+        body { font-family: Segoe UI, Arial, sans-serif; margin: 24px; background: #f7f4ef; color: #222; }
+        table { border-collapse: collapse; width: 100%; background: #fff; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        th { background: #e8dff5; }
+        .btn { display: inline-block; padding: 8px 12px; background: #5b3a8c; color: #fff; text-decoration: none; border-radius: 6px; border: 0; cursor: pointer; }
+        .btn-danger { background: #a33; }
+        .err { color: #b00020; }
+        form.inline { display: inline; }
+    </style>
+</head>
+<body>
+<h1>Список заказов</h1>
+<p th:if="${error}" class="err" th:text="${error}"></p>
+<p><a class="btn" th:href="@{/orders/new}">Создать заказ</a>
+    <a th:href="@{/api/orders}">REST /api/orders</a></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Клиент</th>
+        <th>Дата</th>
+        <th>Статус</th>
+        <th>Сумма</th>
+        <th>Адрес</th>
+        <th>Позиции</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(orders)}">
+        <td colspan="8">Заказов пока нет</td>
+    </tr>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.orderId}">1</td>
+        <td th:text="${order.customer.name}">Клиент</td>
+        <td th:text="${#temporals.format(order.orderDate, 'dd.MM.yyyy HH:mm')}">01.01.2026</td>
+        <td th:text="${order.status}">NEW</td>
+        <td th:text="${order.totalPrice}">0</td>
+        <td th:text="${order.shippingAddress}">адрес</td>
+        <td>
+            <div th:each="d : ${order.details}">
+                <span th:text="${d.product.name}">товар</span>
+                × <span th:text="${d.quantity}">1</span>
+            </div>
+        </td>
+        <td>
+            <a class="btn" th:href="@{/orders/{id}/edit(id=${order.orderId})}">Изменить</a>
+            <form class="inline" th:action="@{/orders/{id}/delete(id=${order.orderId})}" method="post"
+                  onsubmit="return confirm('Удалить заказ?');">
+                <button class="btn btn-danger" type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
