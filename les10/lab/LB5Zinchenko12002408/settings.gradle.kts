@@ -1,0 +1,1 @@
+rootProject.name = "LB4Zinchenko12002408"
