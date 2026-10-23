@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать заказ</title>
+</head>
+<body>
+<h1>Создать заказ</h1>
+<form th:action="@{/web/orders}" method="post">
+    <label>ID Клиента: <input type="number" name="customerId" required></label><br><br>
+    <label>ID Товара: <input type="number" name="productId" required></label><br><br>
+    <label>Количество: <input type="number" name="quantity" min="1" value="1" required></label><br><br>
+    <label>Адрес: <input type="text" name="shippingAddress" required></label><br><br>
+    <button type="submit">Создать</button>
+</form>
+<br>
+<a th:href="@{/web/orders}">Назад</a>
+</body>
+</html>
