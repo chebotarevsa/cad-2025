@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы зоомагазина</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #f2f2f2; }
+        .btn { padding: 5px 10px; text-decoration: none; background: #eee; border: 1px solid #ccc; cursor: pointer;}
+    </style>
+</head>
+<body>
+<h1>Список заказов</h1>
+<a th:href="@{/web/orders/new}">
+    <button class="btn">Создать заказ</button>
+</a>
+<br><br>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Клиент</th>
+        <th>Дата</th>
+        <th>Статус</th>
+        <th>Сумма</th>
+        <th>Состав заказа</th> <!-- Новая колонка -->
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.orderId}"></td>
+        <td>
+            <span th:text="${order.customer.name}"></span><br>
+            <small th:text="${order.customer.phone}"></small>
+        </td>
+        <td th:text="${#dates.format(order.orderDate, 'dd.MM.yyyy HH:mm')}"></td>
+        <td th:text="${order.status}"></td>
+        <td th:text="${order.totalPrice} + ' руб.'"></td>
+
+        <!-- Вывод товаров внутри заказа -->
+        <td>
+            <ul style="margin: 0; padding-left: 15px;">
+                <li th:each="detail : ${order.orderDetails}">
+                    <span th:text="${detail.product.name}"></span>
+                    (x<span th:text="${detail.quantity}"></span>) -
+                    <span th:text="${detail.price}"></span> руб.
+                </li>
+            </ul>
+        </td>
+
+        <td>
+            <form th:action="@{/web/orders/delete/{id}(id=${order.orderId})}" method="post" style="display:inline;">
+                <button type="submit" class="btn" onclick="return confirm('Удалить заказ?')">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
