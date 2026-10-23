@@ -171,16 +171,31 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$/les16/demo" />
         <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
         <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les16/demo" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/les17/demo" />
         <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
         <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les17/demo" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/les18/demo" />
         <option name="gradleHome" value="C:\Program Files\gradle-8.12" />
         <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/les18/demo" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>

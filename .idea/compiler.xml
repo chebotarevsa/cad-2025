@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="les16.demo" options="-parameters" />
+      <module name="les16.demo.main" options="-parameters" />
+      <module name="les16.demo.test" options="-parameters" />
+      <module name="les18.demo" options="-parameters" />
+      <module name="les18.demo.main" options="-parameters" />
+      <module name="les18.demo.test" options="-parameters" />
+      <module name="ru.bsuedu.cad.demo" options="-parameters" />
+      <module name="ru.bsuedu.cad.demo.main" options="-parameters" />
+      <module name="ru.bsuedu.cad.demo.test" options="-parameters" />
+    </option>
+  </component>
+</project>
