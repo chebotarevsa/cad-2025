@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" href="/pwa-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#e9e9e9" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+    <meta name="apple-mobile-web-app-title" content="РасписаШКИ" />
+    <title>Расписание ШКИ</title>
+    <script>
+      var __dark = localStorage.getItem('theme') === 'dark'
+      if (__dark) document.documentElement.classList.add('dark')
+      if (window.navigator.standalone === true) {
+        document.documentElement.classList.add('ios-standalone')
+      }
+
+
+
+      var __tc = document.querySelector('meta[name="theme-color"]')
+      var __color = __dark ? '#15171c' : '#e9e9e9'
+      document.documentElement.style.colorScheme = __dark ? 'dark' : 'light'
+      document.documentElement.style.backgroundColor = __color
+      if (__tc) __tc.content = __color
+      var __s = localStorage.getItem('ui-scale')
+      if (__s) document.documentElement.style.setProperty('--ui-scale', __s)
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

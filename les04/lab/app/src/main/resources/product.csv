@@ -1,0 +1,11 @@
+﻿product_id,name,description,category_id,price,stock_quantity,image_url,created_at,updated_at
+1,Смартфон Quantum X,Флагман с камерой 200Мп и OLED экраном,1,85000,45,https://techstore.com/quantum_x.jpg,2026-01-10,2026-03-01
+2,Беспроводные наушники Echo,Активное шумоподавление и 40ч работы,2,12000,150,https://techstore.com/echo_buds.jpg,2026-01-12,2026-03-01
+3,Умные часы Horizon,Трекер здоровья с датчиком кислорода,3,18000,80,https://techstore.com/horizon_watch.jpg,2026-01-15,2026-03-01
+4,Консоль Titan 5,Поддержка 4K гейминга и трассировки лучей,4,55000,15,https://techstore.com/titan_5.jpg,2026-01-18,2026-03-01
+5,Умный чайник Spark,Управление со смартфона и 5 режимов нагрева,5,4500,65,https://techstore.com/spark_kettle.jpg,2026-01-20,2026-03-01
+6,Монитор UltraView 34,Изогнутый экран 144Гц для дизайнеров,6,42000,22,https://techstore.com/monitor_34.jpg,2026-01-22,2026-03-01
+7,Kлавиатура Click-Z,RGB подсветка и переключатели Red Cherry,7,9500,40,https://techstore.com/keyboard_z.jpg,2026-01-25,2026-03-01
+8,Робот-пылесос CleanBot i7,Лазерная навигация и влажная уборка,5,28000,30,https://techstore.com/cleanbot.jpg,2026-01-28,2026-03-01
+9,Внешний аккумулятор Nova 20k,Емкость 20000 мАч с быстрой зарядкой,2,3500,200,https://techstore.com/powerbank.jpg,2026-02-01,2026-03-01
+10,Планшет AirTab 11,Тонкий корпус и поддержка стилуса,1,38000,55,https://techstore.com/airtab.jpg,2026-02-05,2026-03-01

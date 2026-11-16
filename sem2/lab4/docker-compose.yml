@@ -1,0 +1,19 @@
+name: raspisa-lab4
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: raspisa_lab4
+      POSTGRES_USER: raspisa
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-Lab4!2026}
+    ports:
+      - "127.0.0.1:5544:5432"
+    volumes:
+      - lab4_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U raspisa -d raspisa_lab4"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+volumes:
+  lab4_pgdata:

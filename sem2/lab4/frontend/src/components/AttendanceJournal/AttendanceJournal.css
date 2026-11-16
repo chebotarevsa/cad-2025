@@ -1,0 +1,58 @@
+.attendance-journal { color: var(--color-ink); min-width: 0; }
+.attendance-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.attendance-journal label { display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; }
+.attendance-journal input, .attendance-journal select, .attendance-journal textarea { color: var(--color-ink); background: var(--color-surface); border: 1px solid var(--color-line); border-radius: 10px; padding: 10px 12px; font: inherit; min-width: 0; }
+.attendance-toolbar select { max-width: 260px; }
+.attendance-journal button { border: 1px solid var(--color-line); border-radius: 10px; padding: 10px 14px; font-weight: 600; cursor: pointer; color: var(--color-ink); background: var(--color-surface); }
+.attendance-journal button:hover { border-color: var(--color-brand); }
+.attendance-journal :disabled { opacity: .55; cursor: default; }
+.attendance-journal :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+.attendance-help { color: var(--color-muted); font-size: 14px; line-height: 1.6; margin: 16px 0 8px; }
+.attendance-status { min-height: 25px; color: var(--color-muted); font-size: 13px; }
+.attendance-error { margin: 12px 0; padding: 12px; border: 1px solid #db796e; border-radius: 10px; color: #bb4538; }
+.attendance-error button { margin-left: 12px; }
+.attendance-journal .attendance-delete { color: #bb4538; border-color: #db796e; }
+.attendance-delete-confirm { flex-basis: 100%; padding-top: 12px; border-top: 1px solid var(--color-line); }
+.attendance-delete-confirm p { margin-bottom: 12px; }
+.attendance-delete-confirm button { margin: 0 8px 8px 0; }
+.attendance-roster { border: 1px solid var(--color-line); border-radius: 14px; padding: 18px; margin-bottom: 18px; }
+.attendance-roster form { display: grid; gap: 10px; max-width: 520px; }
+.attendance-roster textarea { width: 100%; resize: vertical; }
+.attendance-roster button { justify-self: start; }
+.attendance-report { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 18px 0; padding: 16px; border: 1px solid var(--color-line); border-radius: 14px; background: color-mix(in srgb, var(--color-surface) 92%, var(--color-brand-light)); }
+.attendance-report > strong { display: flex; align-items: center; gap: 8px; flex-basis: 100%; font-size: 16px; }
+.attendance-report-button { display: inline-flex; align-items: center; gap: 8px; color: var(--color-brand) !important; border-color: var(--color-brand) !important; }
+.attendance-student-edit { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; padding: 16px; border: 1px solid var(--color-line); border-radius: 12px; margin-bottom: 16px; }
+.attendance-empty { text-align: center; padding: 30px 12px; border: 1px dashed var(--color-line); border-radius: 14px; }
+.attendance-empty strong { font-size: 20px; }.attendance-empty p { margin: 10px 0 18px; color: var(--color-muted); }
+.attendance-scroll { width: 100%; overflow-x: auto; overflow-y: visible; border: 1px solid var(--color-line); border-radius: 12px; overscroll-behavior-x: contain; }
+.attendance-scroll table { border-collapse: separate; border-spacing: 0; min-width: 100%; font-size: 14px; }
+.attendance-scroll th, .attendance-scroll td { border-right: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); padding: 8px; text-align: center; }
+.attendance-scroll thead th { position: sticky; top: 0; z-index: 2; background: var(--color-surface); min-width: 110px; }
+.attendance-scroll th span, .attendance-scroll th small { display: block; font-size: 11px; font-weight: 400; color: var(--color-muted); max-width: 145px; margin: 4px auto 0; }
+.attendance-scroll .attendance-name { position: sticky; left: 0; z-index: 1; min-width: 220px; max-width: 260px; text-align: left; background: var(--color-surface); }
+.attendance-scroll thead .attendance-name { z-index: 3; }
+.attendance-name button { border: 0; padding: 6px; text-align: left; overflow-wrap: anywhere; }
+.attendance-name span { display: inline !important; }
+.attendance-scroll td select { width: 100%; min-width: 64px; border-color: transparent; text-align: center; font-weight: 700; }
+.attendance-scroll td[data-mark="Н"] select { color: #b64536; background: #f6dcd544; }
+.attendance-scroll td[data-mark="П"] select { color: #458255; background: #d9e9d644; }
+.attendance-scroll td[data-mark="У"] select { color: #916e00; background: #fff0c944; }
+.attendance-scroll td[data-mark="Б"] select { color: #356c9a; background: #d9ebf844; }
+@media (max-width: 640px) {
+  .attendance-toolbar { gap: 9px; }
+  .attendance-toolbar label { flex: 1 1 calc(50% - 9px); min-width: 0; }
+  .attendance-toolbar button { flex: 1 1 calc(50% - 9px); min-height: 44px; padding: 9px 10px; }
+  .attendance-toolbar label:last-of-type { flex-basis: 100%; }
+  .attendance-scroll .attendance-name { min-width: 145px; max-width: 158px; }
+  .attendance-scroll th, .attendance-scroll td { padding: 6px; }
+  .attendance-scroll thead th { min-width: 92px; }
+  .attendance-scroll td select { min-width: 54px; padding: 9px 3px; font-size: 15px; }
+  .attendance-toolbar select, .attendance-toolbar input { width: 100%; max-width: 100%; min-height: 44px; }
+  .attendance-report { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px; }
+  .attendance-report > strong, .attendance-report label:first-of-type, .attendance-report button { grid-column: 1 / -1; }
+  .attendance-report select, .attendance-report input { width: 100%; min-height: 44px; }
+  .attendance-student-edit { align-items: stretch; }
+  .attendance-student-edit label { flex-basis: 100%; }
+  .attendance-student-edit button { min-height: 44px; }
+}

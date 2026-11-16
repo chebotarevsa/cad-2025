@@ -1,0 +1,37 @@
+server:
+  port: ${SERVER_PORT:8084}
+  servlet:
+    session:
+      cookie:
+        name: RASPISA_LAB4_SESSION
+        http-only: true
+        same-site: lax
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 30MB
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5544/raspisa_lab4}
+    username: ${DB_USERNAME:raspisa}
+    password: ${DB_PASSWORD:Lab4!2026}
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update        
+    show-sql: ${SHOW_SQL:false}              
+    properties:
+      hibernate:
+        format_sql: true      
+
+push:
+  vapid:
+    public-key: ${VAPID_PUBLIC_KEY:}
+    private-key: ${VAPID_PRIVATE_KEY:}
+    subject: ${VAPID_SUBJECT:mailto:admin@raspisa.local}
+
+  reminder:
+    cron: ${REMINDER_CRON:0 0 8 * * *}
+    zone: ${REMINDER_ZONE:Europe/Moscow}

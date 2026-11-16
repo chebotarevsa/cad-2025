@@ -1,0 +1,67 @@
+services:
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: raspisa
+      POSTGRES_USER: raspisa
+      POSTGRES_PASSWORD: raspisa
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U raspisa"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+
+      DB_URL: jdbc:postgresql://db:5432/raspisa
+      DB_USERNAME: raspisa
+      DB_PASSWORD: raspisa
+      SERVER_PORT: 8080
+
+      REMINDER_CRON: ${REMINDER_CRON:-0 0 8 * * *}
+      REMINDER_ZONE: ${REMINDER_ZONE:-Europe/Moscow}
+    ports:
+      - "8080:8080"
+
+
+
+    restart: unless-stopped
+
+    labels:
+      - autoheal=true
+
+
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c '</dev/tcp/localhost/8080' 2>/dev/null || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+
+
+
+
+  autoheal:
+    image: willfarrell/autoheal:latest
+    restart: unless-stopped
+    environment:
+      AUTOHEAL_CONTAINER_LABEL: autoheal
+      AUTOHEAL_INTERVAL: 10
+      AUTOHEAL_START_PERIOD: 60
+    volumes:
+
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  pgdata:

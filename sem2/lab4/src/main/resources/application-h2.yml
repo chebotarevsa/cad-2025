@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/raspisa-lab4;AUTO_SERVER=TRUE
+    username: sa
+    password: ""
