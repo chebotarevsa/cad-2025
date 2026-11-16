@@ -1,0 +1,6 @@
+INSERT INTO CATEGORIES VALUES (1, 'Electronics', 'Devices and gadgets');
+INSERT INTO CATEGORIES VALUES (2, 'Food', 'Products for eating');
+
+INSERT INTO PRODUCTS VALUES
+(1, 'Laptop', 'Gaming laptop', 1, 1200.00, 10, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(2, 'Bread', 'Fresh bread', 2, 1.20, 50, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
