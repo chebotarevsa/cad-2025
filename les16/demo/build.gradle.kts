@@ -1,32 +1,31 @@
 plugins {
-	java
-	id("org.springframework.boot") version "3.4.5"
-	id("io.spring.dependency-management") version "1.1.7"
-}
-
-group = "ru.bsuedu.cad"
-version = "0.0.1-SNAPSHOT"
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
+    java
+    war
+    jacoco
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	runtimeOnly("com.h2database:h2")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("org.springframework:spring-context:6.0.0")
+    implementation("org.springframework:spring-orm:6.0.0")
+    implementation("org.springframework:spring-webmvc:6.0.0")
+    implementation("org.springframework.data:spring-data-jpa:3.0.0")
+    implementation("org.hibernate.orm:hibernate-core:6.1.7.Final")
+    implementation("com.zaxxer:HikariCP:5.0.1")
+    runtimeOnly("com.h2database:h2:2.1.214")
+    implementation("ch.qos.logback:logback-classic:1.4.14")
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
+    compileOnly("jakarta.servlet:jakarta.servlet-api:6.0.0")
+    implementation("org.thymeleaf:thymeleaf:3.1.2.RELEASE")
+    implementation("org.thymeleaf:thymeleaf-spring6:3.1.2.RELEASE")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
 }
 
-tasks.withType<Test> {
-	useJUnitPlatform()
+tasks.test {
+    useJUnitPlatform()
 }
