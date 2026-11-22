@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Список задач</title>
+    <style>
+        body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px;
+        font-family: Arial, sans-serif;
+        color: #4a2c3a;
+        background: #ffe4ec;
+    }
+
+    h1, h2 {
+        margin-bottom: 16px;
+        color: #c71585;
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+
+    li, .add-form {
+        margin-bottom: 12px;
+        padding: 16px;
+        border: 2px solid #ffb6c1;
+        border-radius: 12px;
+        background: #ffffff;
+        box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+    }
+
+    .task-title {
+        font-weight: bold;
+        color: #d81b60;
+    }
+
+    .task-description {
+        margin: 6px 0;
+        color: #7a5567;
+    }
+
+    .task-date {
+        margin: 6px 0;
+        font-size: 0.9em;
+        color: #c71585;
+        font-weight: bold;
+    }
+
+    .completed .task-title,
+    .completed .task-description,
+    .completed .task-date {
+        text-decoration: line-through;
+        color: #a0a0a0;
+    }
+
+    form {
+        margin-top: 10px;
+    }
+
+    label, input {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    label {
+        color: #c71585;
+        font-weight: bold;
+    }
+
+    input {
+        margin: 5px 0 12px;
+        padding: 10px;
+        border: 2px solid #ffb6c1;
+        border-radius: 8px;
+        outline: none;
+        background-color: #fff0f5;
+        color: #4a2c3a;
+        font-family: Arial, sans-serif;
+    }
+
+    input:focus {
+        border-color: #ff69b4;
+        box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        filter: invert(30%) sepia(80%) saturate(2000%) hue-rotate(300deg) brightness(100%) contrast(100%);
+    }
+
+    button, .delete-link {
+        display: inline-block;
+        padding: 8px 14px;
+        border: 0;
+        border-radius: 8px;
+        color: white;
+        background: #ff69b4;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-size: 14px;
+    }
+
+    button:hover, .delete-link:hover {
+        background: #ff1493;
+    }
+
+    .delete-link {
+        margin-top: 10px;
+        background: #db7093;
+    }
+
+    .delete-link:hover {
+        background: #c71585;
+    }
+    </style>
+</head>
+<body>
+<h1>Список задач</h1>
+
+<p th:if="${tasks.isEmpty()}">Задач пока нет.</p>
+
+<ul>
+    <li th:each="task : ${tasks}" th:classappend="${task.completed} ? 'completed'">
+        <div class="task-title" th:text="${task.title}"></div>
+        <div class="task-description" th:text="${task.description}"></div>
+
+        <div class="task-date" th:if="${task.dueDate != null}">
+            Срок: <span th:text="${task.dueDate}"></span>
+        </div>
+
+        <div th:text="${task.completed} ? 'Выполнена' : 'Не выполнена'"></div>
+
+        <form th:if="${!task.completed}"
+              th:action="@{/updateTask/{id}(id=${task.id})}" method="post">
+            <input type="hidden" name="completed" value="true">
+            <button type="submit">Отметить выполненной</button>
+        </form>
+
+        <a class="delete-link"
+           th:href="@{/deleteTask/{id}(id=${task.id})}">Удалить</a>
+    </li>
+</ul>
+
+<h2>Добавить задачу</h2>
+<form class="add-form" th:action="@{/addTask}" method="post">
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Описание:</label>
+    <input type="text" id="description" name="description">
+
+    <label for="dueDate">Срок выполнения:</label>
+    <input type="date" id="dueDate" name="dueDate">
+
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>
