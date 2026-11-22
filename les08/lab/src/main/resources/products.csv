@@ -1,0 +1,11 @@
+﻿product_id,name,description,category_id,price,stock_quantity,image_url,created_at,updated_at
+1,Dry dog food,Complete food for adult dogs,1,1500,50,https://example.com/dog_food.jpg,2025-01-15,2025-02-01
+2,Cat toy "Mouse",Soft toy for playing,2,300,200,https://example.com/cat_toy.jpg,2025-01-16,2025-02-01
+3,Parrot treat,Grain mixture for birds,3,500,100,https://example.com/bird_treats.jpg,2025-01-17,2025-02-01
+4,Cat scratching post,Vertical scratching post 50 cm,4,1200,30,https://example.com/scratching_post.jpg,2025-01-18,2025-02-01
+5,Dog ear cleaning gel,Ear care solution,5,750,40,https://example.com/dog_ear_gel.jpg,2025-01-19,2025-02-01
+6,Aquarium 50 liters,Rectangular glass aquarium,6,6000,10,https://example.com/aquarium.jpg,2025-01-20,2025-02-01
+7,Cat litter,Clumping litter 5 kg,7,800,60,https://example.com/cat_litter.jpg,2025-01-21,2025-02-01
+8,Dog shampoo with aloe vera,Hypoallergenic shampoo,5,550,35,https://example.com/dog_shampoo.jpg,2025-01-22,2025-02-01
+9,Hamster cage,Metal cage 30x30x50 cm,8,2500,20,https://example.com/hamster_cage.jpg,2025-01-23,2025-02-01
+10,Dog leash 3m,Retractable leash with lock,9,1300,25,https://example.com/dog_leash.jpg,2025-01-24,2025-02-01

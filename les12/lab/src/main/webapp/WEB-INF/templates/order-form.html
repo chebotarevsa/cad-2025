@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Form</title>
+</head>
+<body>
+<h1 th:text="${order.id == null ? 'Create Order' : 'Edit Order'}">Order Form</h1>
+
+<form th:action="${order.id == null ? '/orders' : '/orders/update/' + order.id}" method="post">
+    <label>Customer:</label>
+    <select name="customer.id" th:value="${order.customer != null ? order.customer.id : ''}">
+        <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
+    </select>
+    <br>
+
+    <label>Product:</label>
+    <select name="product.id" th:value="${order.product != null ? order.product.id : ''}">
+        <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
+    </select>
+    <br>
+
+    <label>Quantity:</label>
+    <input type="number" name="quantity" th:value="${order.quantity}">
+    <br>
+
+    <input type="submit" value="Save">
+</form>
+<br>
+<a href="/orders">Back to List</a>
+</body>
+</html>
