@@ -1,0 +1,30 @@
+.event-tasks { color: var(--color-ink); }
+.event-tasks h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+.task-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.event-tasks button { border: 1px solid var(--color-line, #ddd); border-radius: 10px; padding: 8px 12px; cursor: pointer; }
+.event-tasks button:disabled { opacity: .55; cursor: wait; }
+.event-tasks button:hover { border-color: #ff9800; }
+.task-columns { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.2fr); gap: 20px; }
+.task-list { display: flex; flex-direction: column; gap: 12px; }
+.event-tasks .task-card { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; text-align: left; padding: 16px; }
+.task-card.selected { border-color: #ff9800; background: #ff980010; }
+.task-card small { opacity: .7; }
+.task-form label { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+.task-form input, .task-form textarea, .task-form select, .task-toolbar > input { border: 1px solid var(--color-line, #ccc); border-radius: 10px; padding: 9px; background: transparent; width: 100%; }
+.task-toolbar > input { flex: 1; min-width: 130px; }
+.task-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.event-tasks .task-primary { background: #ff9800; color: white; border-color: #ff9800; }
+.task-details { margin-top: 22px; border-top: 1px solid #ccc; padding-top: 16px; }
+.subtask { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.subtask label { display: flex; align-items: center; gap: 8px; }
+.task-history { margin-top: 20px; }
+.task-history details { border-top: 1px solid #ccc; padding: 12px 0; }
+.task-history summary { cursor: pointer; }
+.task-history pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .85rem; margin-top: 8px; }
+.task-history .task-pair { margin-top: 16px; }
+.task-error { color: #c62828; margin-bottom: 12px; }
+.task-success { color: #287739; margin-bottom: 12px; }
+.task-table { overflow-x: auto; }
+.task-table table { width: 100%; border-collapse: collapse; }
+.task-table th, .task-table td { padding: 10px; border-bottom: 1px solid #ccc; text-align: left; }
+@media (max-width: 700px) { .task-columns, .task-history .task-pair { grid-template-columns: 1fr; } }
