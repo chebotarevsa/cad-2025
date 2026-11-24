@@ -26,9 +26,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         Task task = taskList.get(position);
-        String title = task.getTitle() != null ? task.getTitle() : "";
-        String status = task.getStatus() != null ? " [" + task.getStatus() + "]" : "";
-        holder.titleTextView.setText(title + status);
+        holder.titleTextView.setText(task.getTitle() != null ? task.getTitle() : "");
         holder.descriptionTextView.setText(task.getDescription() != null ? task.getDescription() : "");
     }
 
