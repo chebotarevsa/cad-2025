@@ -10,7 +10,7 @@ public class AppWithoutConfiguration {
 
     public static void main(String[] args) {
        MessageProvider messageProvider = new MessageProviderImpl();
-       MessageRenderer messageRenderer = new MessageRendererImpl();
+       MessageRenderer messageRenderer = new MessageRendererImpl(new MessageProviderImpl());
        messageRenderer.setMessageProvider(messageProvider);
        messageRenderer.render();
     }

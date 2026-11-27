@@ -16,7 +16,7 @@ public class MessageConfiguration {
     
     @Bean
     MessageRenderer renderer(MessageProvider provider) {
-        MessageRenderer renderer = new MessageRendererImpl();
+        MessageRenderer renderer = new MessageRendererImpl(new MessageProviderImpl());
         renderer.setMessageProvider(provider);
         return renderer;
     } 

@@ -1,25 +1,23 @@
 package ru.bsuedu.cap.component.impl;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-
 import ru.bsuedu.cap.component.Provider;
 import ru.bsuedu.cap.component.Renderer;
 
 @Component("renderer")
 public class RendererImpl implements Renderer {
 
-    @Autowired
-    //@Qualifier("providerSpEL")
-    //@Qualifier("ProviderSpELImpl")
-    private  Provider provider;
+    private final Provider provider;
 
+    @Autowired
+    public RendererImpl(@Qualifier("providerSpEL") Provider provider) {
+        this.provider = provider;
+    }
 
     @Override
     public void render() {
         System.out.println(provider.getMessage());
     }
-
 }
