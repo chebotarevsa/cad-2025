@@ -15,7 +15,7 @@
 
     Проект должен иметь следующие параметры .
     + java пакет - ru.bsuedu.cad.lab (пакет задается так -  ```gradle init --package ru.bsuedu.cad.lab```, остальное в процессе настройки проекта)
-    + Project name - employee-table
+    + Project name - product-table
     + Type - Application
     + Language - Java
     + Java version - 17
@@ -51,15 +51,15 @@ classDiagram
     Parser .. Product
 
     class  Product {
-        +int product_id
-        +string name
-        +string description
-        +int category_id
-        +decimal price
-        +int stock_quantity
-        +string image_url
-        +datetime created_at
-        +datetime updated_at
+        +long productId
+        +String name
+        +String description
+        +int categoryId
+        +BigDecimal price
+        +int stockQuantity
+        +String imageUrl
+        +Date createdAt
+        +Date updatedAt
     }
 
     class  Reader{
@@ -72,12 +72,12 @@ classDiagram
     }
 
     class  Parser{
-        + List[Product] perse(String)
+        + List[Product] parse(String)
     }
     <<interface>> Parser
 
     class CSVParser {
-        + List[Product] perse(String)
+        + List[Product] parse(String)
     }
 
     class  Renderer{
@@ -86,19 +86,20 @@ classDiagram
     <<interface>> Renderer
 
     class ConsoleTableRenderer {
-        - GoodsProvider provider
+        - ProductProvider provider
         +void render()
     }
 
+
     class ProductProvider {
-        + List[Product] getGoods()
+        + List[Product] getProducts()
     }
     <<interface>> ProductProvider
 
     class ConcreteProductProvider{
         - Reader reader
         - Parser parser
-       + List[Product] getGoods()
+       + List[Product] getProducts()
     }
 
 
@@ -128,4 +129,4 @@ classDiagram
 7. В чем отличие инверсии управления от внедрения зависимостей
 8. Принципы инверсии управления. Перечислите, кратко расскажите про каждый
 9. Сцепление (Coupling) и связность (Cohesion)
-10. Какой принцип управления зависимости желательно использовать и почему
+10. Какой принцип внедрения зависимости желательно использовать и почему

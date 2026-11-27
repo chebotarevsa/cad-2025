@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список заказов</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .btn { padding: 5px 10px; margin: 2px; text-decoration: none; color: white; border-radius: 3px; }
+        .btn-delete { background-color: #f44336; }
+        .btn-edit { background-color: #2196F3; }
+        .btn-create { background-color: #4CAF50; }
+    </style>
+</head>
+<body>
+    <h1>Список заказов</h1>
+    <a href="/orders/new" class="btn btn-create">Создать новый заказ</a>
+    <br><br>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Клиент</th>
+                <th>Дата заказа</th>
+                <th>Статус</th>
+                <th>Сумма</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.customer.fullName}"></td>
+                <td th:text="${order.orderDate}"></td>
+                <td th:text="${order.status}"></td>
+                <td th:text="${#aggregates.sum(order.items.![price * quantity])}"></td>
+                <td>
+                    <a th:href="@{/orders/edit/{id}(id=${order.id})}" class="btn btn-edit">Редактировать</a>
+                    <a th:href="@{/orders/delete/{id}(id=${order.id})}" class="btn btn-delete" onclick="return confirm('Удалить заказ?')">Удалить</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

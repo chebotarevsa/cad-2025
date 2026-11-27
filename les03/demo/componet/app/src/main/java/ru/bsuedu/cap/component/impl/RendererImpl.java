@@ -13,7 +13,7 @@ public class RendererImpl implements Renderer {
 
     @Autowired
     //@Qualifier("providerSpEL")
-    //@Qualifier("ProviderSpELImpl")
+    @Qualifier("providerResource")
     private  Provider provider;
 
 

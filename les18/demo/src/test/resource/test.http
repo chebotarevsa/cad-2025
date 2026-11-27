@@ -1,0 +1,12 @@
+GET http://localhost:8080/student
+Authorization: Basic api:api
+
+### 
+POST http://localhost:8080/student
+Authorization: Basic api:api
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "Sergey"
+}
