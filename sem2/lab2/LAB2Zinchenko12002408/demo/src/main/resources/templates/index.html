@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог библиотеки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 30px auto;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+        h1 { color: #2c3e50; text-align: center; }
+        h2 { color: #34495e; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th { background: #3498db; color: white; }
+        tr:hover { background: #f1f1f1; }
+        .status-available { color: green; font-weight: bold; }
+        .status-issued   { color: red;   font-weight: bold; }
+        a.delete {
+            color: white;
+            background: #e74c3c;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        a.delete.disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .hint {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+        form.inline { display: inline; }
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background: #1e8449; }
+        .add-form, .search-form {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .add-form input, .search-form input {
+            padding: 6px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .search-form {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        .search-form .field { flex: 1; margin: 0; }
+        .no-results {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 20px;
+            font-style: italic;
+        }
+        /* 🆕 Стили для уведомлений */
+        .alert {
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .alert-error {
+            background: #fadbd8;
+            color: #922b21;
+            border: 1px solid #e6b0aa;
+        }
+        .alert-success {
+            background: #d4efdf;
+            color: #1e8449;
+            border: 1px solid #a9dfbf;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Каталог библиотеки</h1>
+
+<div th:if="${errorMessage}" class="alert alert-error" th:text="${errorMessage}"></div>
+<div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+
+<form th:action="@{/}" method="get" class="search-form">
+    <div class="field">
+        <label for="search">Поиск по названию или автору:</label>
+        <input type="text" id="search" name="search"
+               th:value="${search}"
+               placeholder="Например: Достоевский">
+    </div>
+    <button type="submit">Найти</button>
+    <a href="/" style="padding: 6px 12px; background: #95a5a6; color: white;
+        text-decoration: none; border-radius: 4px;">Сбросить</a>
+</form>
+
+<div th:if="${search != null and !search.isEmpty() and books.isEmpty()}" class="no-results">
+    По запросу «<span th:text="${search}"></span>» ничего не найдено.
+</div>
+
+<table th:unless="${search != null and !search.isEmpty() and books.isEmpty()}">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Автор</th>
+        <th>Год</th>
+        <th>Статус</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.year}"></td>
+        <td>
+            <span th:if="${book.issued}" class="status-issued">Выдана</span>
+            <span th:unless="${book.issued}" class="status-available">В наличии</span>
+        </td>
+        <td>
+            <form th:action="@{/updateStatus/{id}(id=${book.id})}"
+                  method="post" class="inline">
+                <input type="hidden" name="issued" th:value="${!book.issued}">
+                <button type="submit"
+                        th:text="${book.issued} ? 'Вернуть' : 'Выдать'"></button>
+            </form>
+
+            <span th:if="${book.issued}" class="hint">
+                (нельзя удалить — книга выдана)
+            </span>
+            <a th:unless="${book.issued}"
+               th:href="@{/deleteBook/{id}(id=${book.id})}"
+               class="delete"
+               onclick="return confirm('Удалить книгу из каталога?');">
+                Удалить
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Добавить новую книгу</h2>
+<form th:action="@{/addBook}" method="post" class="add-form">
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author">Автор:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="year">Год издания:</label>
+    <input type="number" id="year" name="year" min="1000" max="2100" required>
+
+    <button type="submit">Добавить книгу</button>
+</form>
+
+</body>
+</html>
